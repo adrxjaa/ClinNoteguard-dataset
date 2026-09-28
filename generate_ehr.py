@@ -16,7 +16,7 @@ from google.genai import types as genai_types
 # ---------------------------------------------------------
 # Load environment variables (GEMINI_API_KEY)
 # ---------------------------------------------------------
-load_dotenv()
+load_dotenv(override=True)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if not GEMINI_API_KEY:
     raise EnvironmentError("GEMINI_API_KEY not set in .env file. Please add GEMINI_API_KEY=<your-key> to .env")
@@ -315,10 +315,13 @@ def _process_one(enc_id: str, split: str, source_file: str, output_file: str) ->
             f"Clinical Note:\n{note}"
         )
         completion = call_genai(
-            "gemini-3.1-pro-preview", user_prompt, EHRHistory,
+            "gemini-3.1-flash-lite", user_prompt, EHRHistory,
             system_instruction=EXTRACTION_SYSTEM_PROMPT,
             context=enc_id,
         )
+        print("Model used: gemini-3.1-flash-lite")
+        if hasattr(completion, 'usage_metadata'):
+            print(f"Usage metadata: {completion.usage_metadata}")
         ehr_history = EHRHistory.model_validate_json(completion.text)
 
         # Temporal order validation (unchanged logic)
@@ -401,6 +404,7 @@ if __name__ == "__main__":
     try:
         # Gate: run smoke test first; only proceed if it passes
         if test_one_encounter():
+            # print("Smoke test completed successfully. Stopping before remaining encounters as requested.")
             process_encounters()
         else:
             print("Smoke test failed - full run aborted. Check quota status and retry.")
