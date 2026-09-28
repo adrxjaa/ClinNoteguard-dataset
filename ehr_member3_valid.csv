@@ -1,0 +1,7 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N073,D2N073,T-5 years,investigation,Colonoscopy performed 5-6 years ago,None,None,Colonoscopy,current_encounter
+P_D2N082,D2N082,T-1 month,diagnosis,Patient recently diagnosed with type 2 diabetes.,type 2 diabetes,metformin,null,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of diabetes type 2.,diabetes type 2,,,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of osteoarthritis.,osteoarthritis,,,current_encounter
+P_D2N079,D2N079,T-1 month,symptom,Patient reports history of intermittent aches and pains in his left shoulder.,,,,temporal_expansion

@@ -3,6 +3,8 @@ import csv
 import re
 import time
 import random
+import json
+from datetime import datetime
 import pandas as pd
 from typing import List, Literal
 from pydantic import BaseModel
@@ -62,6 +64,9 @@ ASSIGNMENT_FILE = os.path.join(BASE_DIR, "member3_assignment.csv")
 CHALLENGE_DIR = os.path.join(BASE_DIR, "aci-bench-corpus", "challenge_data")
 AUDIT_FILE = os.path.join(BASE_DIR, "member3_ehr_audit.csv")
 FAIL_FILE = os.path.join(BASE_DIR, "failed_encounters.csv")
+STATUS_FILE = os.path.join(BASE_DIR, "member3_processing_status.csv")
+DIAGNOSTICS_FILE = os.path.join(BASE_DIR, "member3_generation_diagnostics.jsonl")
+REJECTED_FILE = os.path.join(BASE_DIR, "member3_rejected_events.csv")
 
 TIME_ORDER = {
     "T-10 years": 1,
@@ -80,16 +85,36 @@ TIME_ORDER = {
 # ---------------------------------------------------------
 EXTRACTION_SYSTEM_PROMPT = (
     "You are a strict clinical data extractor. "
-    "Generate historical EHR events (prior to T-0) based ONLY on explicit facts in the text.\n"
+    "You must aggressively scan BOTH the dialogue and clinical note to perform EXHAUSTIVE EXTRACTION of explicitly stated historical clinical facts.\n"
+    "Identify every explicitly stated historical event that can safely become a longitudinal EHR event. "
+    "Look specifically for:\n"
+    "- previous diagnoses or history of conditions\n"
+    "- previous symptoms/conditions when explicitly stated as history\n"
+    "- previous medications and medication starts/stops when explicitly stated\n"
+    "- previous surgeries/procedures\n"
+    "- previous investigations/tests when explicitly stated\n"
+    "- previous hospitalizations\n"
+    "- previous allergies\n"
+    "- previous follow-up/history events when clinically meaningful\n"
+    "Look for explicit temporal phrases such as: years ago, months ago, weeks ago, previously, prior, history of, past medical history, last visit, previously underwent, had [procedure] in [past time].\n\n"
     "RULES:\n"
-    "1. Only directly supported historical facts. No clinical plausibility inference.\n"
-    "2. No minimum quota. If zero historical events can be safely derived, "
-    "return an empty events list and set manual_review_required to true.\n"
-    "3. T-0 (current encounter/HPI) is excluded.\n"
-    "4. Every populated field must be independently supported by evidence_basis. "
-    "Do not infer a diagnosis merely because a medication is mentioned.\n"
-    "5. No invented doses, routes, dates, results, diagnoses, or outcomes.\n"
-    "6. Do not include generic \"previous visit\" events unless they contain meaningful clinical information."
+    "1. The event must represent exactly what the evidence says, not what it implies. Clinically plausible information MUST NOT be inferred.\n"
+    "2. If the source says a patient had a condition in the past, don't automatically turn it into a current diagnosis field entry.\n"
+    "3. If the source mentions a medication and separately mentions a condition, don't connect them unless explicitly connected in the text.\n"
+    "4. If the source gives a numerical value but doesn't identify the test, don't assign a test name.\n"
+    "5. Don't turn treatment of a condition into an explicit diagnosis unless the source states the diagnosis.\n"
+    "6. Don't add anatomical/location details that aren't in the evidence.\n"
+    "7. Don't add phrases such as 'for depression', 'for back pain', 'for birth control', etc. unless explicitly stated.\n"
+    "8. The evidence_basis should be the smallest exact source passage that supports the event.\n"
+    "9. Every populated output field must be directly supported by that evidence basis.\n"
+    "10. Explicit historical information MUST be extracted. T-0 (current encounter/HPI) is excluded. Convert to relative time based on the explicit temporal phrase.\n"
+    "11. If an encounter truly contains no qualifying historical clinical event, return: 'events': []\n"
+    "12. Events do NOT need to be produced in chronological order.\n\n"
+    "EXAMPLES:\n"
+    "Source: 'I had a lumbar fusion about six years ago.'\n"
+    "Output: { 'relative_time': 'T-6 years', 'event_type': 'procedure', 'description': 'Patient had a lumbar fusion.', 'diagnosis': '', 'medication': '', 'investigation': '', 'source_basis': 'temporal_expansion', 'evidence_basis': 'had a lumbar fusion about six years ago' }\n\n"
+    "Source: 'I had kidney stones about two years ago.'\n"
+    "Output: { 'relative_time': 'T-2 years', 'event_type': 'symptom', 'description': 'Patient had kidney stones.', 'diagnosis': '', 'medication': '', 'investigation': '', 'source_basis': 'temporal_expansion', 'evidence_basis': 'had kidney stones about two years ago' }\n"
 )
 
 # ---------------------------------------------------------
@@ -183,11 +208,12 @@ def load_source_data(source_file: str, encounter_id: str):
         return None, None
     return row.iloc[0]["dialogue"], row.iloc[0]["note"]
 
-def is_encounter_completed(output_file: str, encounter_id: str) -> bool:
-    if not os.path.exists(output_file):
+def is_encounter_completed(encounter_id: str) -> bool:
+    if not os.path.exists(STATUS_FILE):
         return False
-    df = pd.read_csv(output_file)
-    return f"P_{encounter_id}" in df["patient_id"].values
+    df = pd.read_csv(STATUS_FILE)
+    matches = df[(df["encounter_id"] == encounter_id) & (df["status"] == "completed")]
+    return not matches.empty
 
 def log_failure(encounter_id: str, split: str, error_msg: str):
     file_exists = os.path.exists(FAIL_FILE)
@@ -266,18 +292,20 @@ def save_events_to_csv(encounter_id: str, events: List[EHREvent], output_file: s
 # ---------------------------------------------------------
 # Hard validator (Merciless auditor)
 # ---------------------------------------------------------
-def run_hard_validator(event: EHREvent) -> bool:
+def run_hard_validator(event: EHREvent) -> StrictValidationResult:
     prompt = (
         "You are a merciless auditor enforcing absolute traceability.\n"
         "Rule: No non-empty output field may contain information that is not directly stated "
-        "in the evidence_basis. No clinical inference allowed.\n\n"
+        "in the evidence_basis. No clinical inference allowed.\n"
+        "Exception: Standard medical terminology or synonymous phrasing that accurately represents the evidence is acceptable "
+        "(e.g., 'appendectomy' for 'appendix out', 'treated with' for 'managed with'). Do not penalize minor grammatical or synonym-based rewording if no new clinical facts are inferred.\n\n"
         f"Evidence Basis: \"{event.evidence_basis}\"\n\n"
         "Generated Fields:\n"
         f"- description: {event.description}\n"
         f"- diagnosis: {event.diagnosis}\n"
         f"- medication: {event.medication}\n"
         f"- investigation: {event.investigation}\n\n"
-        "If ANY generated field contains information, context, or links "
+        "If ANY generated field contains clinical information, context, or links "
         "(e.g., 'started Imitrex for migraines') that is NOT explicitly stated "
         "in the Evidence Basis, you must reject it."
     )
@@ -288,65 +316,145 @@ def run_hard_validator(event: EHREvent) -> bool:
     result = StrictValidationResult.model_validate_json(completion.text)
     if not result.is_strictly_supported:
         print(f"      [!] Validator REJECTED: {result.rejection_reason}")
-    return result.is_strictly_supported
+    return result
+
+
+def normalize_event(ev: EHREvent):
+    placeholders = {"none", "n/a", "na", "not applicable", "not available", "null"}
+    if ev.description and ev.description.strip().lower() in placeholders: ev.description = ""
+    if ev.diagnosis and ev.diagnosis.strip().lower() in placeholders: ev.diagnosis = ""
+    if ev.medication and ev.medication.strip().lower() in placeholders: ev.medication = ""
+    if ev.investigation and ev.investigation.strip().lower() in placeholders: ev.investigation = ""
+
+def save_status(split: str, encounter_id: str, status: str, accepted_count: int, manual_review: bool, error: str):
+    file_exists = os.path.exists(STATUS_FILE)
+    attempt_count = 1
+    if file_exists:
+        df = pd.read_csv(STATUS_FILE)
+        attempt_count = len(df[df["encounter_id"] == encounter_id]) + 1
+    with open(STATUS_FILE, mode="a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(["split", "encounter_id", "status", "accepted_event_count", "manual_review_required", "error", "attempt_count"])
+        writer.writerow([split, encounter_id, status, accepted_count, manual_review, error, attempt_count])
+
+def save_rejected_events(encounter_id: str, split: str, rejected_list: list):
+    if not rejected_list:
+        return
+    file_exists = os.path.exists(REJECTED_FILE)
+    with open(REJECTED_FILE, mode="a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(["encounter_id", "split", "relative_time", "event_type", "description", "diagnosis", "medication", "investigation", "source_basis", "evidence_basis", "rejected_fields", "rejection_reason"])
+        for ev, reason in rejected_list:
+            writer.writerow([encounter_id, split, ev.relative_time, ev.event_type, ev.description, ev.diagnosis, ev.medication, ev.investigation, ev.source_basis, ev.evidence_basis, "", reason])
+
+def save_diagnostics(data: dict):
+    with open(DIAGNOSTICS_FILE, mode="a", encoding="utf-8") as f:
+        f.write(json.dumps(data) + "\n")
 
 # ---------------------------------------------------------
 # Shared encounter processor
 # ---------------------------------------------------------
 def _process_one(enc_id: str, split: str, source_file: str, output_file: str) -> bool:
-    """
-    Extract, validate, and immediately save one encounter.
-    Returns True on success, False on failure.
-    """
-    if is_encounter_completed(output_file, enc_id):
+    if is_encounter_completed(enc_id):
         print(f"[{split}] Skipping {enc_id}: Already completed.")
         return True
 
     dialogue, note = load_source_data(source_file, enc_id)
     if not dialogue:
+        save_status(split, enc_id, "failed", 0, False, "Source data not found")
         log_failure(enc_id, split, "Source data not found")
         print(f"[{split}] MISSING source data for {enc_id}")
         return False
 
     try:
-        user_prompt = (
-            f"Encounter ID: {enc_id}\n\n"
-            f"Dialogue:\n{dialogue}\n\n"
-            f"Clinical Note:\n{note}"
-        )
+        user_prompt = f"Encounter ID: {enc_id}\n\nDialogue:\n{dialogue}\n\nClinical Note:\n{note}"
         completion = call_genai(
             "gemini-3.1-flash-lite", user_prompt, EHRHistory,
             system_instruction=EXTRACTION_SYSTEM_PROMPT,
             context=enc_id,
         )
         print("Model used: gemini-3.1-flash-lite")
-        if hasattr(completion, 'usage_metadata'):
+        usage_dict = {}
+        if hasattr(completion, 'usage_metadata') and completion.usage_metadata:
+            try:
+                usage_dict = completion.usage_metadata.model_dump()
+            except:
+                usage_dict = str(completion.usage_metadata)
             print(f"Usage metadata: {completion.usage_metadata}")
+        
         ehr_history = EHRHistory.model_validate_json(completion.text)
+        
+        ehr_history.events.sort(key=lambda ev: TIME_ORDER[ev.relative_time])
+        
+        diagnostic_data = {
+            "encounter_id": enc_id,
+            "split": split,
+            "model": "gemini-3.1-flash-lite",
+            "timestamp": datetime.utcnow().isoformat(),
+            "raw_generated_json": ehr_history.model_dump(),
+            "usage_metadata": usage_dict,
+            "validation_status": "",
+            "accepted_events": [],
+            "rejected_events": [],
+            "rejection_reasons": [],
+            "chronological_validation_result": ""
+        }
 
-        # Temporal order validation (unchanged logic)
+        # Temporal order validation
         last_val = 0
-        validated_events: List[EHREvent] = []
+        chrono_error = None
+        try:
+            for ev in ehr_history.events:
+                curr_val = TIME_ORDER[ev.relative_time]
+                if curr_val < last_val:
+                    raise ValueError("Events are not strictly chronologically ordered.")
+                last_val = curr_val
+        except Exception as e:
+            chrono_error = str(e)
+            
+        if chrono_error:
+            diagnostic_data["chronological_validation_result"] = "FAILED"
+            save_diagnostics(diagnostic_data)
+            save_status(split, enc_id, "failed", 0, False, chrono_error)
+            log_failure(enc_id, split, chrono_error)
+            print(f"[{split}] FAILED {enc_id}: {chrono_error}")
+            return False
+            
+        diagnostic_data["chronological_validation_result"] = "PASSED"
+
+        validated_events = []
+        rejected_list = []
         for ev in ehr_history.events:
-            curr_val = TIME_ORDER[ev.relative_time]
-            if curr_val < last_val:
-                raise ValueError("Events are not strictly chronologically ordered.")
-            last_val = curr_val
-            if run_hard_validator(ev):
+            normalize_event(ev)
+            val_result = run_hard_validator(ev)
+            if val_result.is_strictly_supported:
                 validated_events.append(ev)
+                diagnostic_data["accepted_events"].append(ev.model_dump())
+            else:
+                rejected_list.append((ev, val_result.rejection_reason))
+                diagnostic_data["rejected_events"].append(ev.model_dump())
+                diagnostic_data["rejection_reasons"].append(val_result.rejection_reason)
 
         manual_review = ehr_history.manual_review_required or not validated_events
-
-        # Immediately persist before moving to next encounter
+        diagnostic_data["validation_status"] = "COMPLETED"
+        
+        save_diagnostics(diagnostic_data)
+        save_rejected_events(enc_id, split, rejected_list)
         save_audit_csv(enc_id, manual_review, validated_events)
         save_events_to_csv(enc_id, validated_events, output_file)
-        print(f"[{split}] SUCCESS {enc_id} -> {len(validated_events)} events. "
-              f"Manual review: {manual_review}")
+        
+        status = "completed" if validated_events else "manual_review"
+        save_status(split, enc_id, status, len(validated_events), manual_review, "")
+        
+        print(f"[{split}] SUCCESS {enc_id} -> {len(validated_events)} events. Manual review: {manual_review}")
         return True
 
     except DailyQuotaExhausted:
         raise  # propagate up so the main loop aborts immediately
     except Exception as exc:
+        save_status(split, enc_id, "failed", 0, False, str(exc))
         log_failure(enc_id, split, str(exc))
         print(f"[{split}] FAILED {enc_id}: {exc}")
         return False
@@ -370,7 +478,7 @@ def test_one_encounter() -> bool:
         source_file = row["source_file"]
         output_file = os.path.join(BASE_DIR, row["output_file"])
 
-        if is_encounter_completed(output_file, enc_id):
+        if is_encounter_completed(enc_id):
             continue  # find first incomplete
 
         ok = _process_one(enc_id, split, source_file, output_file)

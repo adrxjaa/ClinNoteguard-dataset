@@ -1,0 +1,24 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N115,D2N115,T-10 years,other,Played football,null,null,null,current_encounter
+P_D2N088,D2N088,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N088,D2N088,T-1 year,diagnosis,Patient has a history of type two diabetes.,type two diabetes,,,temporal_expansion
+P_D2N088,D2N088,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N091,D2N091,T-6 months,followup,Patient last saw his neurologist.,,,,temporal_expansion
+P_D2N091,D2N091,T-6 months,procedure,Patient previously underwent knee surgery.,,,,temporal_expansion
+P_D2N094,D2N094,T-1 month,diagnosis,Patient has chronic constipation.,chronic constipation,,,temporal_expansion
+P_D2N094,D2N094,T-1 month,medication,Patient takes Miralax for chronic constipation.,,Miralax,,temporal_expansion
+P_D2N094,D2N094,T-1 month,procedure,Patient underwent an appendectomy.,,,,temporal_expansion
+P_D2N097,D2N097,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N097,D2N097,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N097,D2N097,T-1 year,procedure,Patient has a history of a systolic ejection murmur.,,,,temporal_expansion
+P_D2N100,D2N100,T-3 years,symptom,Patient reports acne started about two years ago.,acne,,,temporal_expansion
+P_D2N103,D2N103,T-6 months,procedure,Patient underwent mitral valve repair.,,,,temporal_expansion
+P_D2N112,D2N112,T-10 years,symptom,"Patient fell off of a roof thirty years ago, which was bothersome.",,,,temporal_expansion
+P_D2N118,D2N118,T-1 year,diagnosis,Patient was diagnosed with type 2 diabetes.,type 2 diabetes,,,current_encounter
+P_D2N118,D2N118,T-1 year,investigation,Patient had an A1c test.,,,A1c,current_encounter
+P_D2N121,D2N121,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N121,D2N121,T-1 year,procedure,Patient had a tonsillectomy.,,,,current_encounter
+P_D2N121,D2N121,T-1 year,medication,Patient takes lisinopril 20 mg daily.,,lisinopril,,current_encounter
+P_D2N127,D2N127,T-3 years,hospitalization,Patient underwent surgery after his third motor vehicle accident.,,,,temporal_expansion
+P_D2N127,D2N127,T-3 years,symptom,Patient experienced neck and back pain beginning after the third motor vehicle accident.,,,,temporal_expansion
+P_D2N127,D2N127,T-1 year,medication,Patient was previously prescribed fentanyl at a pain clinic.,,fentanyl,,temporal_expansion

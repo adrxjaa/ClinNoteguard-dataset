@@ -1,0 +1,21 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N024,D2N024,T-1 year,procedure,bilateral reduction mammoplasty,null,null,null,current_encounter
+P_D2N039,D2N039,T-1 year,medication,Patient was previously prescribed lisinopril.,not specified,lisinopril,not specified,current_encounter
+P_D2N051,D2N051,T-5 years,procedure,Stent placement at the right coronary artery,null,null,null,current_encounter
+P_D2N027,D2N027,T-2 weeks,investigation,Stress test performed,,,stress test,current_encounter
+P_D2N030,D2N030,T-1 year,investigation,Patient had a pap smear in 2019,,,pap smear,current_encounter
+P_D2N003,D2N003,T-3 months,medication,Patient was started on Imitrex.,,Imitrex,,temporal_expansion
+P_D2N003,D2N003,T-2 weeks,diagnosis,Patient has a history of kidney stones.,kidney stones,,,temporal_expansion
+P_D2N003,D2N003,T-2 weeks,diagnosis,Patient has a history of migraines.,migraines,,,temporal_expansion
+P_D2N003,D2N003,T-2 weeks,diagnosis,Patient has a history of reflux.,reflux,,,temporal_expansion
+P_D2N003,D2N003,T-2 weeks,symptom,Patient previously had kidney stones.,,,,temporal_expansion
+P_D2N006,D2N006,T-6 months,followup,Patient was last seen by the doctor.,,,,temporal_expansion
+P_D2N006,D2N006,T-2 weeks,symptom,Patient had an episode of gout affecting the right first big toe.,gout,,,temporal_expansion
+P_D2N009,D2N009,T-1 year,procedure,Patient has a history of prior discectomy.,,,,temporal_expansion
+P_D2N012,D2N012,T-1 year,medication,Patient was taking Prozac 20 mg daily.,,Prozac 20 mg,,current_encounter
+P_D2N015,D2N015,T-1 month,medication,Patient was taking Effexor for depression.,depression,Effexor,,temporal_expansion
+P_D2N018,D2N018,T-6 months,procedure,Patient had a lumbar fusion.,,,,temporal_expansion
+P_D2N042,D2N042,T-1 year,symptom,Patient had several ankle injuries in the past.,,,,temporal_expansion
+P_D2N048,D2N048,T-1 month,symptom,Patient had a left leg injury.,,,,temporal_expansion
+P_D2N060,D2N060,T-1 year,symptom,Patient has a history of several soccer-related injuries.,,,,current_encounter
+P_D2N066,D2N066,T-3 months,investigation,Patient had a hemoglobin a1c test.,,,hemoglobin a1c,current_encounter

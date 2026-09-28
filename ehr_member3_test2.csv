@@ -1,0 +1,14 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N132,D2N132,T-1 year,procedure,Lumbar fusion,not specified,not specified,not specified,current_encounter
+P_D2N135,D2N135,T-1 month,medication,Patient is on metoprolol 25 mg twice a day for atrial fibrillation.,atrial fibrillation,metoprolol 25 mg twice a day,N/A,current_encounter
+P_D2N141,D2N141,T-1 month,investigation,CT scan of the head.,None,None,CT scan of the head,current_encounter
+P_D2N159,D2N159,T-6 months,symptom,"Intermittent numbness and tingling in the 1st, 2nd, and 3rd digits on the right hand",null,null,null,current_encounter
+P_D2N159,D2N159,T-1 month,symptom,Numbness and tingling became constant,null,null,null,current_encounter
+P_D2N129,D2N129,T-1 year,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,temporal_expansion
+P_D2N129,D2N129,T-1 year,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,temporal_expansion
+P_D2N129,D2N129,T-1 year,procedure,Patient has a known grade 2 systolic ejection murmur.,,,,temporal_expansion
+P_D2N144,D2N144,T-2 weeks,procedure,Patient received a steroid injection in his right knee.,,steroid,,temporal_expansion
+P_D2N144,D2N144,T-2 weeks,medication,Patient started taking Celebrex.,,Celebrex,,temporal_expansion
+P_D2N147,D2N147,T-3 years,procedure,Patient had an appendectomy.,,,,temporal_expansion
+P_D2N156,D2N156,T-5 years,procedure,Patient had an RCA stent placed.,,,,temporal_expansion
+P_D2N165,D2N165,T-10 years,diagnosis,Patient had an upper extremity fracture when she was in 6th grade.,upper extremity fracture,,,temporal_expansion
