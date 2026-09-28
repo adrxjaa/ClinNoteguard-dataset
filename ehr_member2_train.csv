@@ -1,0 +1,30 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N002,D2N002,T-3 years,procedure,Patient underwent a kidney transplant.,polycystic kidneys,,,temporal_expansion
+P_D2N005,D2N005,T-1 month,medication,Patient is taking digoxin.,,Digoxin,,temporal_expansion
+P_D2N008,D2N008,T-3 years,procedure,Patient had a colonoscopy.,diverticulosis,,,temporal_expansion
+P_D2N011,D2N011,T-2 weeks,procedure,Patient underwent right knee surgery.,,,,temporal_expansion
+P_D2N014,D2N014,T-5 years,procedure,Patient had a skin cancer removed.,skin cancer,,,temporal_expansion
+P_D2N017,D2N017,T-1 year,diagnosis,Patient has a history of atopic eczema.,atopic eczema,,,temporal_expansion
+P_D2N017,D2N017,T-1 year,procedure,Patient underwent a colectomy.,,,,temporal_expansion
+P_D2N023,D2N023,T-1 year,investigation,Patient had a testosterone level check on 11/24/2021.,,,Total testosterone,temporal_expansion
+P_D2N026,D2N026,T-2 weeks,investigation,Patient underwent cervical spine X-rays.,,,cervical spine X-rays,current_encounter
+P_D2N026,D2N026,T-2 weeks,medication,Patient was prescribed gabapentin.,,gabapentin,,current_encounter
+P_D2N026,D2N026,T-2 weeks,medication,Patient was prescribed prednisone.,,prednisone,,current_encounter
+P_D2N029,D2N029,T-1 month,allergy,Patient has a known allergy to Augmentin.,,Augmentin,,temporal_expansion
+P_D2N032,D2N032,T-5 years,procedure,Patient underwent cholecystectomy.,,,,temporal_expansion
+P_D2N032,D2N032,T-1 year,investigation,MR arthrogram of the right hip performed.,,,MR arthrogram of the right hip,temporal_expansion
+P_D2N032,D2N032,T-1 year,allergy,Patient has allergy to Percocet.,,Percocet,,temporal_expansion
+P_D2N047,D2N047,T-5 years,procedure,Patient underwent right coronary artery stent placement.,,,,temporal_expansion
+P_D2N047,D2N047,T-1 month,symptom,Patient had diarrhea.,,,,temporal_expansion
+P_D2N050,D2N050,T-1 month,investigation,Patient had a CT scan ordered by his primary care physician.,,,CT scan,temporal_expansion
+P_D2N050,D2N050,T-1 month,diagnosis,Patient was diagnosed with a kidney stone by his primary care physician.,kidney stone,,,temporal_expansion
+P_D2N053,D2N053,T-3 months,followup,Patient is to follow up in 3 months.,,,,temporal_expansion
+P_D2N056,D2N056,T-6 months,symptom,"Patient reports recurrent sickness, involving primary care or urgent care visits and antibiotic prescriptions, occurring every month or every other month over the last six months.",,antibiotics,,temporal_expansion
+P_D2N059,D2N059,T-1 month,procedure,Patient reports history of tonsillectomy.,,,,temporal_expansion
+P_D2N062,D2N062,T-1 month,investigation,Patient had a barium swallow study.,,,barium swallow,temporal_expansion
+P_D2N065,D2N065,T-10 years,symptom,Patient reports historical soccer-related injuries to the right foot.,,,,current_encounter
+P_D2N035,D2N035,T-1 month,hospitalization,Patient was hospitalized for heart failure.,heart failure,,,current_encounter
+P_D2N035,D2N035,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N041,D2N041,T-10 years,diagnosis,Patient had strep throat as a child.,strep throat,,,temporal_expansion
+P_D2N041,D2N041,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N041,D2N041,T-1 year,diagnosis,Patient has a history of diabetes.,diabetes,,,temporal_expansion

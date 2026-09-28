@@ -1,0 +1,16 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N131,D2N131,T-3 years,procedure,Patient underwent a kidney transplant.,,,,temporal_expansion
+P_D2N140,D2N140,T-5 years,medication,Patient was prescribed Reglan from the emergency room.,,Reglan,,temporal_expansion
+P_D2N143,D2N143,T-3 years,diagnosis,Patient had an abnormal pap smear at age 20.,abnormal pap smear,,,temporal_expansion
+P_D2N146,D2N146,T-3 months,other,Patient lost 25 pounds.,,,,temporal_expansion
+P_D2N146,D2N146,T-1 month,procedure,Patient's father had gallbladder removed.,,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of diabetes.,diabetes,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of asthma.,asthma,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,symptom,Patient has a long history of knee pain.,,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,medication,Patient reports taking metformin.,,metformin,,temporal_expansion
+P_D2N149,D2N149,T-1 month,investigation,Patient had a hemoglobin a1c test previously.,,,hemoglobin a1c,temporal_expansion
+P_D2N155,D2N155,T-5 years,medication,Patient was on Keflex 5 months ago.,,Keflex,,temporal_expansion
+P_D2N167,D2N167,T-1 month,diagnosis,Patient had an ulcer.,ulcer,,,temporal_expansion
+P_D2N164,D2N164,T-1 year,diagnosis,Patient has a history of diabetes.,diabetes,,,temporal_expansion
+P_D2N164,D2N164,T-1 year,medication,Patient has been taking metformin.,,metformin,,temporal_expansion

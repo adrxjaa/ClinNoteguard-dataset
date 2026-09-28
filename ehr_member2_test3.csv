@@ -1,0 +1,17 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N170,D2N170,T-1 year,diagnosis,Patient has a history of COPD.,COPD,,,current_encounter
+P_D2N170,D2N170,T-1 year,diagnosis,Patient has a history of congestive heart failure.,congestive heart failure,,,current_encounter
+P_D2N176,D2N176,T-1 year,diagnosis,Patient was diagnosed with mild gastritis during endoscopy.,mild gastritis,,endoscopy,temporal_expansion
+P_D2N182,D2N182,T-1 month,hospitalization,Patient was admitted to District Regional Hospital.,,,,temporal_expansion
+P_D2N182,D2N182,T-1 month,investigation,"Patient had an elevated white blood cell count of 23,000.",,,white blood cell count,temporal_expansion
+P_D2N182,D2N182,T-1 month,medication,Patient was treated with IV antibiotic therapy.,,IV antibiotic therapy,,temporal_expansion
+P_D2N185,D2N185,T-10 years,hospitalization,Patient was hospitalized three or four times at age four.,,,,temporal_expansion
+P_D2N188,D2N188,T-3 years,other,Patient has been mountain biking.,,,,temporal_expansion
+P_D2N197,D2N197,T-1 year,diagnosis,Patient has a history of migraines occurring every 1 to 2 years.,migraines,,,temporal_expansion
+P_D2N203,D2N203,T-1 month,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,current_encounter
+P_D2N206,D2N206,T-1 year,diagnosis,Patient has a history of kidney stones.,kidney stones,,,temporal_expansion
+P_D2N173,D2N173,T-1 year,diagnosis,Patient has a history of hyperlipidemia.,hyperlipidemia,,,temporal_expansion
+P_D2N173,D2N173,T-1 year,diagnosis,Patient has a history of OCD.,OCD,,,temporal_expansion
+P_D2N191,D2N191,T-1 month,medication,Patient is taking 2.5 mg of Norvasc.,,Norvasc,,current_encounter
+P_D2N191,D2N191,T-1 month,investigation,Patient had an A1c test result of 7.2.,,,A1c,current_encounter
+P_D2N194,D2N194,T-2 weeks,investigation,Patient underwent an x-ray of the left shoulder.,,,x-ray,current_encounter

@@ -1,0 +1,12 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N078,D2N078,T-3 years,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N078,D2N078,T-3 years,diagnosis,Patient has a history of a grade two out of six systolic ejection murmur.,systolic ejection murmur,,,temporal_expansion
+P_D2N078,D2N078,T-1 month,investigation,X-ray of the right knee.,,,x-ray,temporal_expansion
+P_D2N084,D2N084,T-1 year,procedure,Patient stopped smoking.,,,,temporal_expansion
+P_D2N084,D2N084,T-1 year,hospitalization,Patient was in the hospital with CHF.,CHF,,,temporal_expansion
+P_D2N087,D2N087,T-2 weeks,other,Patient went hunting.,,,,current_encounter
+P_D2N069,D2N069,T-1 year,diagnosis,Patient has a history of atrial fibrillation.,Atrial fibrillation,,,temporal_expansion
+P_D2N069,D2N069,T-1 year,procedure,Patient underwent a rhinoplasty.,,,,temporal_expansion
+P_D2N072,D2N072,T-10 years,procedure,Patient underwent an appendectomy.,,,,temporal_expansion
+P_D2N081,D2N081,T-1 month,diagnosis,Patient has a recent diagnosis of stage III non-small cell lung cancer.,Stage III non-small cell lung cancer,,,current_encounter
+P_D2N081,D2N081,T-1 month,investigation,Biopsy was positive for adenocarcinoma.,,,biopsy,current_encounter
