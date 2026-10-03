@@ -4,7 +4,7 @@ import re
 import time
 import random
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 import pandas as pd
 from typing import List, Literal
 from pydantic import BaseModel
@@ -14,6 +14,20 @@ from dotenv import load_dotenv
 from google import genai
 # pyrefly: ignore [missing-import]
 from google.genai import types as genai_types
+
+# ---------------------------------------------------------
+# Terminal colour helpers (auto-disabled when not a TTY)
+# ---------------------------------------------------------
+import sys as _sys
+_COLOUR = _sys.stdout.isatty()
+def _c(code: str, text: str) -> str:
+    return f"\033[{code}m{text}\033[0m" if _COLOUR else text
+
+def green(t):   return _c("92", t)   # success, accepted events, info
+def red(t):     return _c("91", t)   # errors, rejections, failures, aborts
+def yellow(t):  return _c("93", t)   # warnings, retries, skips, quota
+def cyan(t):    return _c("96", t)   # progress headers, model info
+def bold(t):    return _c("1",  t)   # emphasis
 
 # ---------------------------------------------------------
 # Load environment variables (GEMINI_API_KEY)
@@ -59,14 +73,33 @@ class StrictValidationResult(BaseModel):
 # ---------------------------------------------------------
 # Configuration (paths, ordering)
 # ---------------------------------------------------------
-BASE_DIR = r"c:\\Users\\rajee\\Downloads\\clinguard-dataset"
-ASSIGNMENT_FILE = os.path.join(BASE_DIR, "member3_assignment.csv")
+# ---------------------------------------------------------
+# Universal config — change MEMBER to 1, 2, or 3 to switch assignment
+# ---------------------------------------------------------
+MEMBER = 1  # <-- set this to the member number you are processing
+
+# BASE_DIR is always the folder that contains this script (works on any OS)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CHALLENGE_DIR = os.path.join(BASE_DIR, "aci-bench-corpus", "challenge_data")
-AUDIT_FILE = os.path.join(BASE_DIR, "member3_ehr_audit.csv")
-FAIL_FILE = os.path.join(BASE_DIR, "failed_encounters.csv")
-STATUS_FILE = os.path.join(BASE_DIR, "member3_processing_status.csv")
-DIAGNOSTICS_FILE = os.path.join(BASE_DIR, "member3_generation_diagnostics.jsonl")
-REJECTED_FILE = os.path.join(BASE_DIR, "member3_rejected_events.csv")
+
+ASSIGNMENT_FILE  = os.path.join(BASE_DIR, f"member{MEMBER}_assignment.csv")
+AUDIT_FILE       = os.path.join(BASE_DIR, f"member{MEMBER}_ehr_audit.csv")
+FAIL_FILE        = os.path.join(BASE_DIR, f"member{MEMBER}_failed_encounters.csv")
+STATUS_FILE      = os.path.join(BASE_DIR, f"member{MEMBER}_processing_status.csv")
+DIAGNOSTICS_FILE = os.path.join(BASE_DIR, f"member{MEMBER}_generation_diagnostics.jsonl")
+REJECTED_FILE    = os.path.join(BASE_DIR, f"member{MEMBER}_rejected_events.csv")
+
+# ---------------------------------------------------------
+# Model selection
+#   EXTRACTION_MODEL  — used for the main EHR extraction pass
+#                       use the most capable available model for best data quality
+#   VALIDATOR_MODEL   — used for the hard validator (binary yes/no),
+#                       a lighter model is fine here and saves quota
+# ---------------------------------------------------------
+EXTRACTION_MODEL = "gemini-3.1-flash-lite" # high free-tier quota — can process all 69 encounters
+VALIDATOR_MODEL  = "gemini-3.1-flash-lite" # same model, binary yes/no validation
+# NOTE: gemini-3.5-flash has better quality but tiny free-tier daily quota (hits limit ~3 encounters)
+# Switch EXTRACTION_MODEL to "gemini-3.5-flash" only if you have a paid API key
 
 TIME_ORDER = {
     "T-10 years": 1,
@@ -110,11 +143,16 @@ EXTRACTION_SYSTEM_PROMPT = (
     "10. Explicit historical information MUST be extracted. T-0 (current encounter/HPI) is excluded. Convert to relative time based on the explicit temporal phrase.\n"
     "11. If an encounter truly contains no qualifying historical clinical event, return: 'events': []\n"
     "12. Events do NOT need to be produced in chronological order.\n\n"
+    "VALID relative_time VALUES (you must use ONLY these exact strings — no others are accepted):\n"
+    "  T-10 years, T-8 years, T-5 years, T-3 years, T-1 year,\n"
+    "  T-6 months, T-3 months, T-1 month, T-2 weeks\n"
+    "When the source temporal phrase does not exactly match a bucket, pick the NEAREST one.\n"
+    "Examples: '2 years ago' → T-3 years | '6 years ago' → T-5 years | '18 months ago' → T-1 year | '4 weeks ago' → T-1 month\n\n"
     "EXAMPLES:\n"
     "Source: 'I had a lumbar fusion about six years ago.'\n"
-    "Output: { 'relative_time': 'T-6 years', 'event_type': 'procedure', 'description': 'Patient had a lumbar fusion.', 'diagnosis': '', 'medication': '', 'investigation': '', 'source_basis': 'temporal_expansion', 'evidence_basis': 'had a lumbar fusion about six years ago' }\n\n"
+    "Output: { 'relative_time': 'T-5 years', 'event_type': 'procedure', 'description': 'Patient had a lumbar fusion.', 'diagnosis': '', 'medication': '', 'investigation': '', 'source_basis': 'temporal_expansion', 'evidence_basis': 'had a lumbar fusion about six years ago' }\n\n"
     "Source: 'I had kidney stones about two years ago.'\n"
-    "Output: { 'relative_time': 'T-2 years', 'event_type': 'symptom', 'description': 'Patient had kidney stones.', 'diagnosis': '', 'medication': '', 'investigation': '', 'source_basis': 'temporal_expansion', 'evidence_basis': 'had kidney stones about two years ago' }\n"
+    "Output: { 'relative_time': 'T-3 years', 'event_type': 'diagnosis', 'description': 'Patient had kidney stones.', 'diagnosis': 'kidney stones', 'medication': '', 'investigation': '', 'source_basis': 'temporal_expansion', 'evidence_basis': 'had kidney stones about two years ago' }\n"
 )
 
 # ---------------------------------------------------------
@@ -155,14 +193,19 @@ def call_genai(model_name: str, prompt: str, schema, *,
                 or "429" in msg
                 or "RESOURCE_EXHAUSTED" in msg
             )
+            is_transient_error = (
+                "503" in msg
+                or "UNAVAILABLE" in msg
+                or "currently experiencing high demand" in msg
+            )
             if is_quota_error:
                 # Fast-fail on daily quota: no retry will help today
                 if "PerDay" in msg or "PerModelPerDay" in msg:
                     tag = f"[{context}] " if context else ""
-                    print(
+                    print(red(
                         f"{tag}[!!] DAILY quota exhausted. "
                         "This resets at midnight Pacific Time. Aborting."
-                    )
+                    ))
                     raise DailyQuotaExhausted(
                         f"Daily free-tier quota exhausted{f' for {context}' if context else ''}. "
                         "Retry tomorrow after the quota resets."
@@ -183,14 +226,26 @@ def call_genai(model_name: str, prompt: str, schema, *,
                 wait += jitter
 
                 tag = f"[{context}] " if context else ""
-                print(
+                print(yellow(
                     f"{tag}[!] Quota error (attempt {attempt}/{max_retries}). "
                     f"Waiting {wait:.1f}s before retry."
-                )
+                ))
+                time.sleep(wait)
+                continue
+            elif is_transient_error:
+                # 503 / model overloaded — back off and retry
+                wait = base_backoff * (2 ** (attempt - 1))
+                jitter = random.uniform(0, min(wait * 0.10, 5.0))
+                wait += jitter
+                tag = f"[{context}] " if context else ""
+                print(yellow(
+                    f"{tag}[!] Model unavailable / 503 (attempt {attempt}/{max_retries}). "
+                    f"Waiting {wait:.1f}s before retry."
+                ))
                 time.sleep(wait)
                 continue
             else:
-                raise  # non-quota errors bubble up immediately
+                raise  # non-quota, non-transient errors bubble up immediately
 
     raise RuntimeError(
         f"Gemini API call failed after {max_retries} retries"
@@ -310,21 +365,27 @@ def run_hard_validator(event: EHREvent) -> StrictValidationResult:
         "in the Evidence Basis, you must reject it."
     )
     completion = call_genai(
-        "gemini-3.1-flash-lite", prompt, StrictValidationResult,
+        VALIDATOR_MODEL, prompt, StrictValidationResult,
         context=f"validator/{event.event_type}"
     )
     result = StrictValidationResult.model_validate_json(completion.text)
     if not result.is_strictly_supported:
-        print(f"      [!] Validator REJECTED: {result.rejection_reason}")
+        print(red(f"      [✗] Validator REJECTED: {result.rejection_reason}"))
     return result
 
 
 def normalize_event(ev: EHREvent):
-    placeholders = {"none", "n/a", "na", "not applicable", "not available", "null"}
-    if ev.description and ev.description.strip().lower() in placeholders: ev.description = ""
-    if ev.diagnosis and ev.diagnosis.strip().lower() in placeholders: ev.diagnosis = ""
-    if ev.medication and ev.medication.strip().lower() in placeholders: ev.medication = ""
-    if ev.investigation and ev.investigation.strip().lower() in placeholders: ev.investigation = ""
+    placeholders = {
+        "none", "n/a", "na", "not applicable", "not available",
+        "null", "not specified", "unspecified", "unknown", "n/a.",
+        "-", "--", "N/A", "none.",
+    }
+    def _clean(val: str) -> str:
+        return "" if val and val.strip().lower() in placeholders else val
+    ev.description   = _clean(ev.description)
+    ev.diagnosis     = _clean(ev.diagnosis)
+    ev.medication    = _clean(ev.medication)
+    ev.investigation = _clean(ev.investigation)
 
 def save_status(split: str, encounter_id: str, status: str, accepted_count: int, manual_review: bool, error: str):
     file_exists = os.path.exists(STATUS_FILE)
@@ -358,31 +419,35 @@ def save_diagnostics(data: dict):
 # ---------------------------------------------------------
 def _process_one(enc_id: str, split: str, source_file: str, output_file: str) -> bool:
     if is_encounter_completed(enc_id):
-        print(f"[{split}] Skipping {enc_id}: Already completed.")
+        print(cyan(f"[{split}] ⏭  Skipping {enc_id}: Already completed."))
         return True
 
     dialogue, note = load_source_data(source_file, enc_id)
     if not dialogue:
         save_status(split, enc_id, "failed", 0, False, "Source data not found")
         log_failure(enc_id, split, "Source data not found")
-        print(f"[{split}] MISSING source data for {enc_id}")
+        print(red(f"[{split}] ✗ MISSING source data for {enc_id}"))
         return False
 
     try:
         user_prompt = f"Encounter ID: {enc_id}\n\nDialogue:\n{dialogue}\n\nClinical Note:\n{note}"
         completion = call_genai(
-            "gemini-3.1-flash-lite", user_prompt, EHRHistory,
+            EXTRACTION_MODEL, user_prompt, EHRHistory,
             system_instruction=EXTRACTION_SYSTEM_PROMPT,
             context=enc_id,
         )
-        print("Model used: gemini-3.1-flash-lite")
+        print(cyan(f"  Model used: {EXTRACTION_MODEL}"))
         usage_dict = {}
         if hasattr(completion, 'usage_metadata') and completion.usage_metadata:
             try:
                 usage_dict = completion.usage_metadata.model_dump()
-            except:
+            except Exception as _ue:
                 usage_dict = str(completion.usage_metadata)
-            print(f"Usage metadata: {completion.usage_metadata}")
+                print(yellow(f"  [warn] usage_metadata serialisation failed: {_ue}"))
+            print(cyan(f"  Tokens — prompt: {getattr(completion.usage_metadata, 'prompt_token_count', '?')}  "
+                       f"output: {getattr(completion.usage_metadata, 'candidates_token_count', '?')}  "
+                       f"thinking: {getattr(completion.usage_metadata, 'thoughts_token_count', '?')}  "
+                       f"total: {getattr(completion.usage_metadata, 'total_token_count', '?')}"))
         
         ehr_history = EHRHistory.model_validate_json(completion.text)
         
@@ -391,8 +456,8 @@ def _process_one(enc_id: str, split: str, source_file: str, output_file: str) ->
         diagnostic_data = {
             "encounter_id": enc_id,
             "split": split,
-            "model": "gemini-3.1-flash-lite",
-            "timestamp": datetime.utcnow().isoformat(),
+            "model": EXTRACTION_MODEL,
+            "timestamp": datetime.now(tz=timezone.utc).isoformat(),
             "raw_generated_json": ehr_history.model_dump(),
             "usage_metadata": usage_dict,
             "validation_status": "",
@@ -419,18 +484,26 @@ def _process_one(enc_id: str, split: str, source_file: str, output_file: str) ->
             save_diagnostics(diagnostic_data)
             save_status(split, enc_id, "failed", 0, False, chrono_error)
             log_failure(enc_id, split, chrono_error)
-            print(f"[{split}] FAILED {enc_id}: {chrono_error}")
+            print(red(f"[{split}] ✗ FAILED {enc_id} (chrono): {chrono_error}"))
             return False
             
         diagnostic_data["chronological_validation_result"] = "PASSED"
 
         validated_events = []
         rejected_list = []
+        seen_evidence: set = set()
         for ev in ehr_history.events:
             normalize_event(ev)
+            # Deduplicate: skip events with identical evidence_basis already accepted
+            evidence_key = ev.evidence_basis.strip().lower()
+            if evidence_key and evidence_key in seen_evidence:
+                print(yellow(f"      [dup] Skipping duplicate event: {ev.evidence_basis[:80]}"))
+                continue
             val_result = run_hard_validator(ev)
             if val_result.is_strictly_supported:
                 validated_events.append(ev)
+                if evidence_key:
+                    seen_evidence.add(evidence_key)
                 diagnostic_data["accepted_events"].append(ev.model_dump())
             else:
                 rejected_list.append((ev, val_result.rejection_reason))
@@ -448,7 +521,9 @@ def _process_one(enc_id: str, split: str, source_file: str, output_file: str) ->
         status = "completed" if validated_events else "manual_review"
         save_status(split, enc_id, status, len(validated_events), manual_review, "")
         
-        print(f"[{split}] SUCCESS {enc_id} -> {len(validated_events)} events. Manual review: {manual_review}")
+        _summary = f"[{split}] ✓ {enc_id} → {len(validated_events)} events accepted"
+        _summary += f"  ⚑ manual review" if manual_review else ""
+        print(green(_summary) if validated_events else yellow(_summary + "  (0 events — manual review)"))
         return True
 
     except DailyQuotaExhausted:
@@ -456,7 +531,7 @@ def _process_one(enc_id: str, split: str, source_file: str, output_file: str) ->
     except Exception as exc:
         save_status(split, enc_id, "failed", 0, False, str(exc))
         log_failure(enc_id, split, str(exc))
-        print(f"[{split}] FAILED {enc_id}: {exc}")
+        print(red(f"[{split}] ✗ FAILED {enc_id}: {exc}"))
         return False
 
 # ---------------------------------------------------------
@@ -467,8 +542,8 @@ def test_one_encounter() -> bool:
     Run the first incomplete encounter as a quota-handling smoke test.
     Returns True if it succeeded (or everything is done), False otherwise.
     """
-    print("=" * 60)
-    print("[Test] Running one-encounter smoke test ...")
+    print(cyan(bold("=" * 60)))
+    print(cyan(bold("[Test] Running one-encounter smoke test ...")))
     df_assignment = pd.read_csv(ASSIGNMENT_FILE)
 
 
@@ -483,14 +558,14 @@ def test_one_encounter() -> bool:
 
         ok = _process_one(enc_id, split, source_file, output_file)
         if ok:
-            print(f"[Test] Smoke test PASSED for {enc_id}. Proceeding to full run.")
+            print(green(f"[Test] ✓ Smoke test PASSED for {enc_id}. Proceeding to full run."))
         else:
-            print(f"[Test] Smoke test FAILED for {enc_id}. Aborting.")
-        print("=" * 60)
+            print(red(f"[Test] ✗ Smoke test FAILED for {enc_id}. Aborting."))
+        print(cyan("=" * 60))
         return ok
 
-    print("[Test] All encounters already completed. Nothing to test.")
-    print("=" * 60)
+    print(green("[Test] ✓ All encounters already completed. Nothing to test."))
+    print(cyan("=" * 60))
     return True
 
 # ---------------------------------------------------------
@@ -505,7 +580,7 @@ def process_encounters():
         split = row["split"]
         source_file = row["source_file"]
         output_file = os.path.join(BASE_DIR, row["output_file"])
-        print(f"[{idx}/{total}] Processing {enc_id} ({split}) ...")
+        print(cyan(f"\n[{idx}/{total}] Processing {enc_id} ({split}) ..."))
         _process_one(enc_id, split, source_file, output_file)
 
 if __name__ == "__main__":
@@ -515,6 +590,6 @@ if __name__ == "__main__":
             # print("Smoke test completed successfully. Stopping before remaining encounters as requested.")
             process_encounters()
         else:
-            print("Smoke test failed - full run aborted. Check quota status and retry.")
+            print(red("Smoke test failed - full run aborted. Check quota status and retry."))
     except DailyQuotaExhausted as dqe:
-        print(f"\n[ABORT] {dqe}")
+        print(red(bold(f"\n[ABORT] {dqe}")))

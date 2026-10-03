@@ -1,0 +1,17 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N169,D2N169,T-1 year,symptom,Patient had a cough with his first cold.,,,,temporal_expansion
+P_D2N169,D2N169,T-6 months,procedure,Patient underwent cataract surgery.,,,,temporal_expansion
+P_D2N172,D2N172,T-1 year,diagnosis,Patient has a history of depression.,depression,,,current_encounter
+P_D2N172,D2N172,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N172,D2N172,T-1 year,procedure,Patient has a known grade two systolic ejection murmur.,,,,current_encounter
+P_D2N181,D2N181,T-10 years,allergy,Patient has a history of seasonal allergies.,,,,current_encounter
+P_D2N181,D2N181,T-10 years,procedure,Patient had surgery as an infant for twisted intestines.,,,,current_encounter
+P_D2N184,D2N184,T-1 month,procedure,Patient underwent right medial unicompartmental arthroplasty.,,,,temporal_expansion
+P_D2N193,D2N193,T-1 year,diagnosis,Patient has a history of seasonal allergies.,seasonal allergies,,,current_encounter
+P_D2N193,D2N193,T-1 year,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,current_encounter
+P_D2N193,D2N193,T-3 months,investigation,Patient had blood work at her last visit.,,,blood work,current_encounter
+P_D2N196,D2N196,T-1 month,diagnosis,Patient has a history of essential hypertension.,essential hypertension,,,current_encounter
+P_D2N196,D2N196,T-1 month,diagnosis,Patient has a history of hyperlipidemia.,hyperlipidemia,,,current_encounter
+P_D2N196,D2N196,T-1 month,procedure,Patient has a grade 3 out of 6 systolic ejection murmur.,,,,current_encounter
+P_D2N199,D2N199,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N205,D2N205,T-1 month,investigation,Patient had a 4.4 cm left upper lobe nodule identified on pathology.,,,pathology report,current_encounter

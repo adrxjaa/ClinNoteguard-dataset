@@ -1,0 +1,116 @@
+encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis,evidence_basis,manual_review_required
+D2N001,,,,,,,,,True
+D2N001,T-1 year,investigation,Patient underwent an echocardiogram demonstrating a reduced ejection fraction of 45% and mitral regurgitation.,,,echocardiogram,temporal_expansion,echocardiogram that we did last year . it showed that you have that low-ish pumping function of your heart at about 45 % . and it also sh- shows some mitral regurgitation,False
+D2N004,T-10 years,procedure,Patient underwent lower back surgery.,,,,temporal_expansion,surgery about 10 years ago on my lower back,False
+D2N007,T-1 year,investigation,Echocardiogram results appearing unchanged in comparison to last year.,,,echocardiogram,temporal_expansion,Echocardiogram appears unchanged in comparison to last year,False
+D2N010,T-1 month,diagnosis,Patient has a history of congestive heart failure.,congestive heart failure,,,current_encounter,I know you have this history of congestive heart failure,False
+D2N013,T-3 months,followup,Patient saw his neurologist.,,,,temporal_expansion,saw your neurologist about three months ago,False
+D2N013,T-3 months,diagnosis,Patient has a history of epilepsy.,epilepsy,,,temporal_expansion,past medical history significant for ... epilepsy,False
+D2N013,T-3 months,diagnosis,Patient has a history of anxiety.,anxiety,,,temporal_expansion,past medical history significant for anxiety,False
+D2N016,T-1 year,procedure,Patient had a prior rotator cuff repair.,,,,temporal_expansion,prior rotator cuff repair,False
+D2N016,T-1 year,procedure,Patient underwent rotator cuff repair eight months ago.,,,,temporal_expansion,had that rotator cuff repaired about eight months ago,False
+D2N016,T-6 months,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion,past medical history significant for depression,False
+D2N016,T-6 months,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion,past medical history significant for hypertension,False
+D2N019,T-1 month,diagnosis,Patient has a history of anaphylaxis.,anaphylaxis,,,temporal_expansion,looks like you've got a history of anaphylaxis,False
+D2N019,T-1 month,procedure,Patient had neck surgery.,,,,temporal_expansion,"your , uh , neck surgery",False
+D2N022,T-3 months,investigation,MRI of the right index finger was obtained.,,,MRI,temporal_expansion,MRI of the right index finger performed on 04/24/2021,False
+D2N022,T-3 months,diagnosis,"MRI showed focal soft tissue swelling over the right index MCP joint, partial-thickness tear of the right FDS, and fluid consistent with tenosynovitis.",partial-thickness tear of the right FDS,,MRI,temporal_expansion,"MRI of the right index finger performed on 04/24/2021, which showed just focal soft tissue swelling over the right index mcp joint, partial-thickness tear of the right fds, and fluid consistent with tenosynovitis",False
+D2N022,T-1 month,allergy,Patient reported that dexamethasone causes his heart to race.,,dexamethasone,,temporal_expansion,"reaction to dexamethasone, which causes his heart to race",False
+D2N022,T-1 month,allergy,Patient reported that methylprednisolone causes itching.,,methylprednisolone,,temporal_expansion,methylprednisolone causes his to itch,False
+D2N025,T-3 months,medication,Patient's lisinopril dose was increased to 10 mg daily.,,lisinopril,,temporal_expansion,her lisinopril had- has also been increased up to 10 milligrams daily in march,False
+D2N028,T-3 years,diagnosis,Patient has a history of GERD.,GERD,,,current_encounter,past medical history includes gerd,False
+D2N028,T-3 years,diagnosis,Patient has a history of anxiety.,anxiety,,,current_encounter,"past medical history includes gerd , anxiety",False
+D2N028,T-3 years,diagnosis,Patient has a history of depression.,depression,,,current_encounter,"past medical history includes gerd , anxiety , depression",False
+D2N028,T-3 years,investigation,Abdominal CT scan performed.,,,abdominal ct,current_encounter,he had an abdominal ct on 1/23/2020,False
+D2N028,T-1 year,medication,Patient has been taking Crestor.,,Crestor,,current_encounter,"crestor , how long have you been taking that ? about 18 months",False
+D2N028,T-6 months,investigation,Patient had blood work done at physical four months ago.,,,blood work,current_encounter,i have a physical about four months ago and they ... i had blood drawn then,False
+D2N031,T-3 years,procedure,Patient had a right breast lumpectomy.,,,,temporal_expansion,right breast lumpectomy last year,False
+D2N031,T-3 years,investigation,Mammogram found a calcification in the right breast.,,,mammogram,temporal_expansion,found to have a calcification in your right breast during a mammogram in october 2019,False
+D2N031,T-3 years,investigation,Ultrasound of right breast revealed a mass.,,,ultrasound,temporal_expansion,"ultrasound of your right breast on november 3rd, 2019, which revealed a mass",False
+D2N031,T-3 years,diagnosis,Patient diagnosed with DCIS.,DCIS,,,temporal_expansion,"pathology results during that biopsy came back as grade two, er positive, pr positive, dcis",False
+D2N031,T-1 year,investigation,Normal mammogram.,,,mammogram,temporal_expansion,your last mammogram was in january 2021? and that was normal.,False
+D2N031,T-1 month,allergy,Allergy to penicillin.,,,,temporal_expansion,allergic to penicillin,False
+D2N034,,,,,,,,,True
+D2N037,T-1 year,symptom,Patient has been experiencing bilateral elbow pain for approximately 1.5 years.,,,,temporal_expansion,"been experiencing bilateral elbow pain, right worse than left, for approximately 1.5 years",False
+D2N040,T-1 month,medication,Patient had dose of metformin increased at last visit.,,metformin 500 mg twice a day,,current_encounter,it looks like we increased your metformin to five hundred milligrams twice a day last visit,False
+D2N040,T-1 month,diagnosis,Patient has a known history of diabetes mellitus type two.,diabetes mellitus type two,,,current_encounter,carolyn is a 34 -year-old female with a history of diabetes mellitus type two,False
+D2N043,,,,,,,,,True
+D2N046,T-1 year,diagnosis,Patient has a history of type two diabetes.,type two diabetes,,,current_encounter,past medical history of type two diabetes,False
+D2N049,T-3 months,investigation,Patient had a glucose test with a result of 300.,,,glucose test,current_encounter,we did a glucose test on you couple of months ago and you were around three hundred,False
+D2N052,,,,,,,,,True
+D2N055,,,,,,,,,True
+D2N058,T-5 years,procedure,Patient had an RCA stent.,coronary artery disease,,,temporal_expansion,history of CAD status post prior RCA stent in 2018,False
+D2N058,T-5 years,diagnosis,Patient had a diagnosis of hypertension.,hypertension,,,temporal_expansion,history of ... hypertension,False
+D2N058,T-5 years,diagnosis,Patient had a diagnosis of diabetes mellitus.,diabetes mellitus,,,temporal_expansion,history of ... diabetes mellitus,False
+D2N061,T-1 month,medication,Patient reports taking metformin 500 mg twice a day for diabetes.,diabetes,metformin 500 mg twice a day,,current_encounter,you're diabetic and that you take five hundred milligrams of metformin twice a day,False
+D2N064,,,,,,,,,True
+D2N067,,,,,,,,,True
+D2N068,T-3 months,investigation,Patient had an echocardiogram performed.,,,echocardiogram,current_encounter,this is the echocardiogram that we did about four months ago,False
+D2N071,T-3 years,procedure,Patient underwent a lobectomy.,,,,current_encounter,you've had that prior lobectomy a couple years ago,False
+D2N071,T-1 year,medication,Patient was put on Prozac.,,Prozac,,current_encounter,i know that we had put you on the prozac last year,False
+D2N074,T-1 year,investigation,Eyes were checked.,,,eye check,current_encounter,my eyes were checked in the fall,False
+D2N074,T-3 months,medication,Patient tried Tylenol for headaches.,,Tylenol,,current_encounter,"I tried tylenol a few times for the headaches but it did n't work , so i stopped",False
+D2N077,,,,,,,,,True
+D2N080,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter,Patient reports a personal history of hypertension,False
+D2N080,T-1 month,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,current_encounter,personal history of... type 2 diabetes,False
+D2N083,,,,,,,,,True
+D2N086,,,,,,,,,True
+D2N089,T-1 year,procedure,Patient had a physical examination with a systolic ejection murmur heard in the past.,,,,temporal_expansion,"i do appreciate a slight 2/6 systolic- systolic ejection murmur , um , which we've heard in the past",False
+D2N092,T-1 month,diagnosis,Patient has a history of allergies.,allergies,,,current_encounter,i have allergies,False
+D2N095,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter,past medical history significant for hypertension,False
+D2N098,T-1 year,other,Patient retired from his office job.,,,,temporal_expansion,retired from my office job last year,False
+D2N101,T-10 years,symptom,Patient has had back and neck pain since high school.,,,,temporal_expansion,endorses back and neck pain since she was in high school,False
+D2N101,T-1 month,other,Patient lost 10 pounds over the past few months.,,,,temporal_expansion,lost about 10 pounds over the past few months,False
+D2N104,,,,,,,,,True
+D2N107,,,,,,,,,True
+D2N110,T-1 month,medication,Patient completed a course of antibiotics prescribed by his PCP.,,antibiotics,,temporal_expansion,"he was seen by his PCP. He was placed on a round of antibiotics, which he completed yesterday.",False
+D2N113,,,,,,,,,True
+D2N116,T-10 years,symptom,Patient reports historical right shoulder pain from when he was younger while playing baseball.,,,,temporal_expansion,I hurt that same shoulder because it's my my dominant hand my right hand i hurt it playing baseball when i was younger,False
+D2N119,,,,,,,,,True
+D2N122,T-10 years,diagnosis,Patient's mother has a history of breast cancer.,breast cancer,,,current_encounter,my mom did have breast cancer,False
+D2N122,T-8 years,diagnosis,Patient has a history of rheumatoid arthritis.,rheumatoid arthritis,,,current_encounter,i see here on your medical history that you also have a history of rheumatoid arthritis,False
+D2N122,T-8 years,other,Patient is a previous smoker and stopped seven years ago.,,,,temporal_expansion,i stopped smoking probably about seven years ago,False
+D2N125,T-3 months,other,Patient tried tiger balm.,,,,temporal_expansion,I've tried rubbing some you know some tiger balm on it that didn't work,False
+D2N130,T-1 year,diagnosis,Patient had a seizure.,seizure,,,temporal_expansion,my last seizure was a year ago,False
+D2N130,T-1 year,procedure,Patient underwent an endoscopy.,,,endoscopy,temporal_expansion,she then underwent an endoscopy,False
+D2N130,T-1 year,diagnosis,Patient diagnosed with an episode of gastritis.,gastritis,,endoscopy,temporal_expansion,endoscopy which showed that she had an episode of gastritis,False
+D2N133,T-1 year,diagnosis,Patient has a history of chronic back pain.,chronic back pain,,,temporal_expansion,history of chronic back pain,False
+D2N133,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion,history of depression,False
+D2N136,,,,,,,,,True
+D2N139,T-1 month,investigation,Patient had a thyroid profile investigation.,,,thyroid profile,temporal_expansion,"thyroid profile from march 1st , 2021",False
+D2N139,T-1 month,hospitalization,Patient was in the emergency room for palpitations and high blood pressure.,hypertension,,,temporal_expansion,"in March, Mr. Roberts went to the emergency room for palpitations and hypertension",False
+D2N142,T-1 month,investigation,CMP and CBC were essentially unremarkable at the last visit.,,,CMP and CBC,temporal_expansion,at last visit on april 16th... cmp and cbc were essentially unremarkable,False
+D2N145,T-1 month,diagnosis,"Patient has a history of rosacea, including ocular rosacea.","rosacea, ocular rosacea",,,current_encounter,"She also has a history of rosacea, including ocular rosacea.",False
+D2N148,T-3 years,procedure,Patient underwent right total knee replacement.,,,,temporal_expansion,history of a right total knee arthroplasty 2 years ago,False
+D2N148,T-3 months,symptom,Patient noted tingling in his right toes that resolved after one hour.,,,,temporal_expansion,"noted tingling in his right toes, which resolved after approximately 1 hour",False
+D2N148,T-3 months,procedure,Patient attempted physical therapy at his gym.,,,,temporal_expansion,attempted physical therapy at his gym without any relief,False
+D2N151,T-1 year,diagnosis,Patient reports history of diabetes type 2.,diabetes type 2,,,temporal_expansion,reports history of ... diabetes type 2,False
+D2N151,T-1 year,diagnosis,Patient reports history of hypertension.,hypertension,,,temporal_expansion,reports history of hypertension,False
+D2N154,,,,,,,,,True
+D2N157,T-10 years,diagnosis,Patient noted heart murmur heard in the past.,heart murmur,,,current_encounter,i do hear a little heart murmur on your heart which i've heard before in the past,False
+D2N157,T-6 months,hospitalization,Patient had a heart attack.,heart attack,,,current_encounter,you did have a heart attack about six months ago,False
+D2N157,T-6 months,procedure,Patient underwent stent placement in the left anterior descending artery.,,,,current_encounter,they put that that stent into your left anterior descending artery,False
+D2N160,T-3 years,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter,you have a past medical history of hypertension,False
+D2N163,,,,,,,,,True
+D2N166,T-1 year,other,Patient has a history of playing soccer.,,,,current_encounter,have a history of playing sports ... soccer,False
+D2N169,T-1 year,symptom,Patient had a cough with his first cold.,,,,temporal_expansion,i had a little bit of a cough with my first cold in the last year and a half,False
+D2N169,T-6 months,procedure,Patient underwent cataract surgery.,,,,temporal_expansion,the cataract surgery about four and a half months ago,False
+D2N172,T-1 year,diagnosis,Patient has a history of depression.,depression,,,current_encounter,history of depression,False
+D2N172,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter,history of ... hypertension,False
+D2N172,T-1 year,procedure,Patient has a known grade two systolic ejection murmur.,,,,current_encounter,you do have a grade two systolic ejection murmur. we've had that before,False
+D2N175,,,,,,,,,True
+D2N178,,,,,,,,,True
+D2N181,T-10 years,allergy,Patient has a history of seasonal allergies.,,,,current_encounter,past medical history of anxiety and seasonal allergies,False
+D2N181,T-10 years,procedure,Patient had surgery as an infant for twisted intestines.,,,,current_encounter,"i had it when i was a baby . my mom said my intestines were twisted , so i had to have surgery when i was around one month old",False
+D2N184,T-1 month,procedure,Patient underwent right medial unicompartmental arthroplasty.,,,,temporal_expansion,six weeks status post right medial unicompartmental arthroplasty,False
+D2N187,,,,,,,,,True
+D2N190,,,,,,,,,True
+D2N193,T-1 year,diagnosis,Patient has a history of seasonal allergies.,seasonal allergies,,,current_encounter,Patient reports history of seasonal allergies,False
+D2N193,T-1 year,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,current_encounter,Patient reports history of... diabetes type 2,False
+D2N193,T-3 months,investigation,Patient had blood work at her last visit.,,,blood work,current_encounter,You had blood work at your last visit,False
+D2N196,T-1 month,diagnosis,Patient has a history of essential hypertension.,essential hypertension,,,current_encounter,history of essential hypertension,False
+D2N196,T-1 month,diagnosis,Patient has a history of hyperlipidemia.,hyperlipidemia,,,current_encounter,history of hyperlipidemia,False
+D2N196,T-1 month,procedure,Patient has a grade 3 out of 6 systolic ejection murmur.,,,,current_encounter,you still have that grade three out of six systolic ejection murmur that's unchanged from your prior,False
+D2N199,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion,i know that you have a history of hypertension we kinda battled with that over the over the past year or so,False
+D2N202,,,,,,,,,True
+D2N205,T-1 month,investigation,Patient had a 4.4 cm left upper lobe nodule identified on pathology.,,,pathology report,current_encounter,pathology report is reviewed and shows evidence of a 4.4 cm left upper lobe nodule,False

@@ -1,0 +1,40 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N001,D2N001,T-1 year,investigation,Patient underwent an echocardiogram demonstrating a reduced ejection fraction of 45% and mitral regurgitation.,,,echocardiogram,temporal_expansion
+P_D2N004,D2N004,T-10 years,procedure,Patient underwent lower back surgery.,,,,temporal_expansion
+P_D2N007,D2N007,T-1 year,investigation,Echocardiogram results appearing unchanged in comparison to last year.,,,echocardiogram,temporal_expansion
+P_D2N010,D2N010,T-1 month,diagnosis,Patient has a history of congestive heart failure.,congestive heart failure,,,current_encounter
+P_D2N013,D2N013,T-3 months,followup,Patient saw his neurologist.,,,,temporal_expansion
+P_D2N013,D2N013,T-3 months,diagnosis,Patient has a history of epilepsy.,epilepsy,,,temporal_expansion
+P_D2N013,D2N013,T-3 months,diagnosis,Patient has a history of anxiety.,anxiety,,,temporal_expansion
+P_D2N016,D2N016,T-1 year,procedure,Patient had a prior rotator cuff repair.,,,,temporal_expansion
+P_D2N016,D2N016,T-1 year,procedure,Patient underwent rotator cuff repair eight months ago.,,,,temporal_expansion
+P_D2N016,D2N016,T-6 months,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N016,D2N016,T-6 months,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N019,D2N019,T-1 month,diagnosis,Patient has a history of anaphylaxis.,anaphylaxis,,,temporal_expansion
+P_D2N019,D2N019,T-1 month,procedure,Patient had neck surgery.,,,,temporal_expansion
+P_D2N022,D2N022,T-3 months,investigation,MRI of the right index finger was obtained.,,,MRI,temporal_expansion
+P_D2N022,D2N022,T-3 months,diagnosis,"MRI showed focal soft tissue swelling over the right index MCP joint, partial-thickness tear of the right FDS, and fluid consistent with tenosynovitis.",partial-thickness tear of the right FDS,,MRI,temporal_expansion
+P_D2N022,D2N022,T-1 month,allergy,Patient reported that dexamethasone causes his heart to race.,,dexamethasone,,temporal_expansion
+P_D2N022,D2N022,T-1 month,allergy,Patient reported that methylprednisolone causes itching.,,methylprednisolone,,temporal_expansion
+P_D2N025,D2N025,T-3 months,medication,Patient's lisinopril dose was increased to 10 mg daily.,,lisinopril,,temporal_expansion
+P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of GERD.,GERD,,,current_encounter
+P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of anxiety.,anxiety,,,current_encounter
+P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of depression.,depression,,,current_encounter
+P_D2N028,D2N028,T-3 years,investigation,Abdominal CT scan performed.,,,abdominal ct,current_encounter
+P_D2N028,D2N028,T-1 year,medication,Patient has been taking Crestor.,,Crestor,,current_encounter
+P_D2N028,D2N028,T-6 months,investigation,Patient had blood work done at physical four months ago.,,,blood work,current_encounter
+P_D2N031,D2N031,T-3 years,procedure,Patient had a right breast lumpectomy.,,,,temporal_expansion
+P_D2N031,D2N031,T-3 years,investigation,Mammogram found a calcification in the right breast.,,,mammogram,temporal_expansion
+P_D2N031,D2N031,T-3 years,investigation,Ultrasound of right breast revealed a mass.,,,ultrasound,temporal_expansion
+P_D2N031,D2N031,T-3 years,diagnosis,Patient diagnosed with DCIS.,DCIS,,,temporal_expansion
+P_D2N031,D2N031,T-1 year,investigation,Normal mammogram.,,,mammogram,temporal_expansion
+P_D2N031,D2N031,T-1 month,allergy,Allergy to penicillin.,,,,temporal_expansion
+P_D2N037,D2N037,T-1 year,symptom,Patient has been experiencing bilateral elbow pain for approximately 1.5 years.,,,,temporal_expansion
+P_D2N040,D2N040,T-1 month,medication,Patient had dose of metformin increased at last visit.,,metformin 500 mg twice a day,,current_encounter
+P_D2N040,D2N040,T-1 month,diagnosis,Patient has a known history of diabetes mellitus type two.,diabetes mellitus type two,,,current_encounter
+P_D2N046,D2N046,T-1 year,diagnosis,Patient has a history of type two diabetes.,type two diabetes,,,current_encounter
+P_D2N049,D2N049,T-3 months,investigation,Patient had a glucose test with a result of 300.,,,glucose test,current_encounter
+P_D2N058,D2N058,T-5 years,procedure,Patient had an RCA stent.,coronary artery disease,,,temporal_expansion
+P_D2N058,D2N058,T-5 years,diagnosis,Patient had a diagnosis of hypertension.,hypertension,,,temporal_expansion
+P_D2N058,D2N058,T-5 years,diagnosis,Patient had a diagnosis of diabetes mellitus.,diabetes mellitus,,,temporal_expansion
+P_D2N061,D2N061,T-1 month,medication,Patient reports taking metformin 500 mg twice a day for diabetes.,diabetes,metformin 500 mg twice a day,,current_encounter

@@ -1,0 +1,13 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N089,D2N089,T-1 year,procedure,Patient had a physical examination with a systolic ejection murmur heard in the past.,,,,temporal_expansion
+P_D2N092,D2N092,T-1 month,diagnosis,Patient has a history of allergies.,allergies,,,current_encounter
+P_D2N095,D2N095,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N098,D2N098,T-1 year,other,Patient retired from his office job.,,,,temporal_expansion
+P_D2N101,D2N101,T-10 years,symptom,Patient has had back and neck pain since high school.,,,,temporal_expansion
+P_D2N101,D2N101,T-1 month,other,Patient lost 10 pounds over the past few months.,,,,temporal_expansion
+P_D2N110,D2N110,T-1 month,medication,Patient completed a course of antibiotics prescribed by his PCP.,,antibiotics,,temporal_expansion
+P_D2N116,D2N116,T-10 years,symptom,Patient reports historical right shoulder pain from when he was younger while playing baseball.,,,,temporal_expansion
+P_D2N122,D2N122,T-10 years,diagnosis,Patient's mother has a history of breast cancer.,breast cancer,,,current_encounter
+P_D2N122,D2N122,T-8 years,diagnosis,Patient has a history of rheumatoid arthritis.,rheumatoid arthritis,,,current_encounter
+P_D2N122,D2N122,T-8 years,other,Patient is a previous smoker and stopped seven years ago.,,,,temporal_expansion
+P_D2N125,D2N125,T-3 months,other,Patient tried tiger balm.,,,,temporal_expansion

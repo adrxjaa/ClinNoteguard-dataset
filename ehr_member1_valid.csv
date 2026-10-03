@@ -1,0 +1,8 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N068,D2N068,T-3 months,investigation,Patient had an echocardiogram performed.,,,echocardiogram,current_encounter
+P_D2N071,D2N071,T-3 years,procedure,Patient underwent a lobectomy.,,,,current_encounter
+P_D2N071,D2N071,T-1 year,medication,Patient was put on Prozac.,,Prozac,,current_encounter
+P_D2N074,D2N074,T-1 year,investigation,Eyes were checked.,,,eye check,current_encounter
+P_D2N074,D2N074,T-3 months,medication,Patient tried Tylenol for headaches.,,Tylenol,,current_encounter
+P_D2N080,D2N080,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N080,D2N080,T-1 month,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,current_encounter
