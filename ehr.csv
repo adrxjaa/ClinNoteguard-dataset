@@ -16,7 +16,7 @@ P_D2N022,D2N022,T-3 months,investigation,MRI of the right index finger was obtai
 P_D2N022,D2N022,T-3 months,diagnosis,"MRI showed focal soft tissue swelling over the right index MCP joint, partial-thickness tear of the right FDS, and fluid consistent with tenosynovitis.",partial-thickness tear of the right FDS,,MRI,temporal_expansion
 P_D2N022,D2N022,T-1 month,allergy,Patient reported that dexamethasone causes his heart to race.,,dexamethasone,,temporal_expansion
 P_D2N022,D2N022,T-1 month,allergy,Patient reported that methylprednisolone causes itching.,,methylprednisolone,,temporal_expansion
-P_D2N025,D2N025,T-3 months,medication,Patient's lisinopril dose was increased to 10 mg daily.,,lisinopril,,temporal_expansion
+P_D2N025,D2N025,T-3 months,medication,Patient's lisinopril dose was increased to 10 mg daily.,,lisinopril 10 mg,,temporal_expansion
 P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of GERD.,GERD,,,current_encounter
 P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of anxiety.,anxiety,,,current_encounter
 P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of depression.,depression,,,current_encounter
@@ -236,7 +236,7 @@ P_D2N203,D2N203,T-1 month,diagnosis,Patient has a history of high blood pressure
 P_D2N206,D2N206,T-1 year,diagnosis,Patient has a history of kidney stones.,kidney stones,,,temporal_expansion
 P_D2N173,D2N173,T-1 year,diagnosis,Patient has a history of hyperlipidemia.,hyperlipidemia,,,temporal_expansion
 P_D2N173,D2N173,T-1 year,diagnosis,Patient has a history of OCD.,OCD,,,temporal_expansion
-P_D2N191,D2N191,T-1 month,medication,Patient is taking 2.5 mg of Norvasc.,,Norvasc,,current_encounter
+P_D2N191,D2N191,T-1 month,medication,Patient is taking 2.5 mg of Norvasc.,,Norvasc 2.5 mg,,current_encounter
 P_D2N191,D2N191,T-1 month,investigation,Patient had an A1c test result of 7.2.,,,A1c,current_encounter
 P_D2N194,D2N194,T-2 weeks,investigation,Patient underwent an x-ray of the left shoulder.,,,x-ray,current_encounter
 P_D2N180,D2N180,T-1 year,investigation,CT brain with and without contrast,,,CT brain,current_encounter
