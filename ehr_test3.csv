@@ -1,0 +1,52 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N169,D2N169,T-1 year,symptom,Patient had a cough with his first cold.,,,,temporal_expansion
+P_D2N169,D2N169,T-6 months,procedure,Patient underwent cataract surgery.,,,,temporal_expansion
+P_D2N172,D2N172,T-1 year,diagnosis,Patient has a history of depression.,depression,,,current_encounter
+P_D2N172,D2N172,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N172,D2N172,T-1 year,procedure,Patient has a known grade two systolic ejection murmur.,,,,current_encounter
+P_D2N181,D2N181,T-10 years,allergy,Patient has a history of seasonal allergies.,,,,current_encounter
+P_D2N181,D2N181,T-10 years,procedure,Patient had surgery as an infant for twisted intestines.,,,,current_encounter
+P_D2N184,D2N184,T-1 month,procedure,Patient underwent right medial unicompartmental arthroplasty.,,,,temporal_expansion
+P_D2N193,D2N193,T-1 year,diagnosis,Patient has a history of seasonal allergies.,seasonal allergies,,,current_encounter
+P_D2N193,D2N193,T-1 year,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,current_encounter
+P_D2N193,D2N193,T-3 months,investigation,Patient had blood work at her last visit.,,,blood work,current_encounter
+P_D2N196,D2N196,T-1 month,diagnosis,Patient has a history of essential hypertension.,essential hypertension,,,current_encounter
+P_D2N196,D2N196,T-1 month,diagnosis,Patient has a history of hyperlipidemia.,hyperlipidemia,,,current_encounter
+P_D2N196,D2N196,T-1 month,procedure,Patient has a grade 3 out of 6 systolic ejection murmur.,,,,current_encounter
+P_D2N199,D2N199,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N205,D2N205,T-1 month,investigation,Patient had a 4.4 cm left upper lobe nodule identified on pathology.,,,pathology report,current_encounter
+P_D2N170,D2N170,T-1 year,diagnosis,Patient has a history of COPD.,COPD,,,current_encounter
+P_D2N170,D2N170,T-1 year,diagnosis,Patient has a history of congestive heart failure.,congestive heart failure,,,current_encounter
+P_D2N176,D2N176,T-1 year,diagnosis,Patient was diagnosed with mild gastritis during endoscopy.,mild gastritis,,endoscopy,temporal_expansion
+P_D2N182,D2N182,T-1 month,hospitalization,Patient was admitted to District Regional Hospital.,,,,temporal_expansion
+P_D2N182,D2N182,T-1 month,investigation,"Patient had an elevated white blood cell count of 23,000.",,,white blood cell count,temporal_expansion
+P_D2N182,D2N182,T-1 month,medication,Patient was treated with IV antibiotic therapy.,,IV antibiotic therapy,,temporal_expansion
+P_D2N185,D2N185,T-10 years,hospitalization,Patient was hospitalized three or four times at age four.,,,,temporal_expansion
+P_D2N188,D2N188,T-3 years,other,Patient has been mountain biking.,,,,temporal_expansion
+P_D2N197,D2N197,T-1 year,diagnosis,Patient has a history of migraines occurring every 1 to 2 years.,migraines,,,temporal_expansion
+P_D2N203,D2N203,T-1 month,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,current_encounter
+P_D2N206,D2N206,T-1 year,diagnosis,Patient has a history of kidney stones.,kidney stones,,,temporal_expansion
+P_D2N173,D2N173,T-1 year,diagnosis,Patient has a history of hyperlipidemia.,hyperlipidemia,,,temporal_expansion
+P_D2N173,D2N173,T-1 year,diagnosis,Patient has a history of OCD.,OCD,,,temporal_expansion
+P_D2N191,D2N191,T-1 month,medication,Patient is taking 2.5 mg of Norvasc.,,Norvasc,,current_encounter
+P_D2N191,D2N191,T-1 month,investigation,Patient had an A1c test result of 7.2.,,,A1c,current_encounter
+P_D2N194,D2N194,T-2 weeks,investigation,Patient underwent an x-ray of the left shoulder.,,,x-ray,current_encounter
+P_D2N180,D2N180,T-1 year,investigation,CT brain with and without contrast,,,CT brain,current_encounter
+P_D2N186,D2N186,T-3 years,procedure,Lumbar microdiscectomy performed in November 2020,,,,current_encounter
+P_D2N207,D2N207,T-5 years,diagnosis,Acute myocardial infarction in 2018,acute myocardial infarction,,,current_encounter
+P_D2N207,D2N207,T-5 years,procedure,Placement of a coronary artery stent in the right coronary artery in 2018,,,,current_encounter
+P_D2N207,D2N207,T-1 month,followup,Last visit with nephrologist,,,,current_encounter
+P_D2N171,D2N171,T-6 months,procedure,steroid injection for herniated disc,herniated disc,steroid,,current_encounter
+P_D2N168,D2N168,T-1 year,procedure,Patient started therapy.,,,,temporal_expansion
+P_D2N168,D2N168,T-1 year,investigation,Patient had an ECG.,,,ECG,temporal_expansion
+P_D2N168,D2N168,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N168,D2N168,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N174,D2N174,T-1 year,procedure,Patient had a stent placed.,,,,temporal_expansion
+P_D2N183,D2N183,T-3 years,medication,Patient was prescribed clindamycin lotion.,,clindamycin lotion,,temporal_expansion
+P_D2N183,D2N183,T-3 years,medication,Patient was prescribed tretinoin cream.,,tretinoin cream,,temporal_expansion
+P_D2N183,D2N183,T-3 years,medication,Patient was prescribed 4-5% benzoyl peroxide wash for face.,,4-5% benzoyl peroxide wash,,temporal_expansion
+P_D2N189,D2N189,T-2 weeks,procedure,Patient underwent stent placement in the right coronary artery.,,,,current_encounter
+P_D2N189,D2N189,T-2 weeks,procedure,Patient underwent cardiac catheterization via wrist.,,,,current_encounter
+P_D2N189,D2N189,T-2 weeks,diagnosis,Patient had an inferior myocardial infarction.,inferior myocardial infarction,,,current_encounter
+P_D2N192,D2N192,T-1 year,other,Patient traveled to Europe.,,,,temporal_expansion
+P_D2N201,D2N201,T-1 year,other,Patient gained 80 lbs.,,,,temporal_expansion

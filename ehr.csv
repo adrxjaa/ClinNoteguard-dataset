@@ -1,0 +1,260 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N001,D2N001,T-1 year,investigation,Patient underwent an echocardiogram demonstrating a reduced ejection fraction of 45% and mitral regurgitation.,,,echocardiogram,temporal_expansion
+P_D2N004,D2N004,T-10 years,procedure,Patient underwent lower back surgery.,,,,temporal_expansion
+P_D2N007,D2N007,T-1 year,investigation,Echocardiogram results appearing unchanged in comparison to last year.,,,echocardiogram,temporal_expansion
+P_D2N010,D2N010,T-1 month,diagnosis,Patient has a history of congestive heart failure.,congestive heart failure,,,current_encounter
+P_D2N013,D2N013,T-3 months,followup,Patient saw his neurologist.,,,,temporal_expansion
+P_D2N013,D2N013,T-3 months,diagnosis,Patient has a history of epilepsy.,epilepsy,,,temporal_expansion
+P_D2N013,D2N013,T-3 months,diagnosis,Patient has a history of anxiety.,anxiety,,,temporal_expansion
+P_D2N016,D2N016,T-1 year,procedure,Patient had a prior rotator cuff repair.,,,,temporal_expansion
+P_D2N016,D2N016,T-1 year,procedure,Patient underwent rotator cuff repair eight months ago.,,,,temporal_expansion
+P_D2N016,D2N016,T-6 months,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N016,D2N016,T-6 months,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N019,D2N019,T-1 month,diagnosis,Patient has a history of anaphylaxis.,anaphylaxis,,,temporal_expansion
+P_D2N019,D2N019,T-1 month,procedure,Patient had neck surgery.,,,,temporal_expansion
+P_D2N022,D2N022,T-3 months,investigation,MRI of the right index finger was obtained.,,,MRI,temporal_expansion
+P_D2N022,D2N022,T-3 months,diagnosis,"MRI showed focal soft tissue swelling over the right index MCP joint, partial-thickness tear of the right FDS, and fluid consistent with tenosynovitis.",partial-thickness tear of the right FDS,,MRI,temporal_expansion
+P_D2N022,D2N022,T-1 month,allergy,Patient reported that dexamethasone causes his heart to race.,,dexamethasone,,temporal_expansion
+P_D2N022,D2N022,T-1 month,allergy,Patient reported that methylprednisolone causes itching.,,methylprednisolone,,temporal_expansion
+P_D2N025,D2N025,T-3 months,medication,Patient's lisinopril dose was increased to 10 mg daily.,,lisinopril,,temporal_expansion
+P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of GERD.,GERD,,,current_encounter
+P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of anxiety.,anxiety,,,current_encounter
+P_D2N028,D2N028,T-3 years,diagnosis,Patient has a history of depression.,depression,,,current_encounter
+P_D2N028,D2N028,T-3 years,investigation,Abdominal CT scan performed.,,,abdominal ct,current_encounter
+P_D2N028,D2N028,T-1 year,medication,Patient has been taking Crestor.,,Crestor,,current_encounter
+P_D2N028,D2N028,T-6 months,investigation,Patient had blood work done at physical four months ago.,,,blood work,current_encounter
+P_D2N031,D2N031,T-3 years,procedure,Patient had a right breast lumpectomy.,,,,temporal_expansion
+P_D2N031,D2N031,T-3 years,investigation,Mammogram found a calcification in the right breast.,,,mammogram,temporal_expansion
+P_D2N031,D2N031,T-3 years,investigation,Ultrasound of right breast revealed a mass.,,,ultrasound,temporal_expansion
+P_D2N031,D2N031,T-3 years,diagnosis,Patient diagnosed with DCIS.,DCIS,,,temporal_expansion
+P_D2N031,D2N031,T-1 year,investigation,Normal mammogram.,,,mammogram,temporal_expansion
+P_D2N031,D2N031,T-1 month,allergy,Allergy to penicillin.,,,,temporal_expansion
+P_D2N037,D2N037,T-1 year,symptom,Patient has been experiencing bilateral elbow pain for approximately 1.5 years.,,,,temporal_expansion
+P_D2N040,D2N040,T-1 month,medication,Patient had dose of metformin increased at last visit.,,metformin 500 mg twice a day,,current_encounter
+P_D2N040,D2N040,T-1 month,diagnosis,Patient has a known history of diabetes mellitus type two.,diabetes mellitus type two,,,current_encounter
+P_D2N046,D2N046,T-1 year,diagnosis,Patient has a history of type two diabetes.,type two diabetes,,,current_encounter
+P_D2N049,D2N049,T-3 months,investigation,Patient had a glucose test with a result of 300.,,,glucose test,current_encounter
+P_D2N058,D2N058,T-5 years,procedure,Patient had an RCA stent.,coronary artery disease,,,temporal_expansion
+P_D2N058,D2N058,T-5 years,diagnosis,Patient had a diagnosis of hypertension.,hypertension,,,temporal_expansion
+P_D2N058,D2N058,T-5 years,diagnosis,Patient had a diagnosis of diabetes mellitus.,diabetes mellitus,,,temporal_expansion
+P_D2N061,D2N061,T-1 month,medication,Patient reports taking metformin 500 mg twice a day for diabetes.,diabetes,metformin 500 mg twice a day,,current_encounter
+P_D2N002,D2N002,T-3 years,procedure,Patient underwent a kidney transplant.,polycystic kidneys,,,temporal_expansion
+P_D2N005,D2N005,T-1 month,medication,Patient is taking digoxin.,,Digoxin,,temporal_expansion
+P_D2N008,D2N008,T-3 years,procedure,Patient had a colonoscopy.,diverticulosis,,,temporal_expansion
+P_D2N011,D2N011,T-2 weeks,procedure,Patient underwent right knee surgery.,,,,temporal_expansion
+P_D2N014,D2N014,T-5 years,procedure,Patient had a skin cancer removed.,skin cancer,,,temporal_expansion
+P_D2N017,D2N017,T-1 year,diagnosis,Patient has a history of atopic eczema.,atopic eczema,,,temporal_expansion
+P_D2N017,D2N017,T-1 year,procedure,Patient underwent a colectomy.,,,,temporal_expansion
+P_D2N023,D2N023,T-1 year,investigation,Patient had a testosterone level check on 11/24/2021.,,,Total testosterone,temporal_expansion
+P_D2N026,D2N026,T-2 weeks,investigation,Patient underwent cervical spine X-rays.,,,cervical spine X-rays,current_encounter
+P_D2N026,D2N026,T-2 weeks,medication,Patient was prescribed gabapentin.,,gabapentin,,current_encounter
+P_D2N026,D2N026,T-2 weeks,medication,Patient was prescribed prednisone.,,prednisone,,current_encounter
+P_D2N029,D2N029,T-1 month,allergy,Patient has a known allergy to Augmentin.,,Augmentin,,temporal_expansion
+P_D2N032,D2N032,T-5 years,procedure,Patient underwent cholecystectomy.,,,,temporal_expansion
+P_D2N032,D2N032,T-1 year,investigation,MR arthrogram of the right hip performed.,,,MR arthrogram of the right hip,temporal_expansion
+P_D2N032,D2N032,T-1 year,allergy,Patient has allergy to Percocet.,,Percocet,,temporal_expansion
+P_D2N047,D2N047,T-5 years,procedure,Patient underwent right coronary artery stent placement.,,,,temporal_expansion
+P_D2N047,D2N047,T-1 month,symptom,Patient had diarrhea.,,,,temporal_expansion
+P_D2N050,D2N050,T-1 month,investigation,Patient had a CT scan ordered by his primary care physician.,,,CT scan,temporal_expansion
+P_D2N050,D2N050,T-1 month,diagnosis,Patient was diagnosed with a kidney stone by his primary care physician.,kidney stone,,,temporal_expansion
+P_D2N053,D2N053,T-3 months,followup,Patient is to follow up in 3 months.,,,,temporal_expansion
+P_D2N056,D2N056,T-6 months,symptom,"Patient reports recurrent sickness, involving primary care or urgent care visits and antibiotic prescriptions, occurring every month or every other month over the last six months.",,antibiotics,,temporal_expansion
+P_D2N059,D2N059,T-1 month,procedure,Patient reports history of tonsillectomy.,,,,temporal_expansion
+P_D2N062,D2N062,T-1 month,investigation,Patient had a barium swallow study.,,,barium swallow,temporal_expansion
+P_D2N065,D2N065,T-10 years,symptom,Patient reports historical soccer-related injuries to the right foot.,,,,current_encounter
+P_D2N035,D2N035,T-1 month,hospitalization,Patient was hospitalized for heart failure.,heart failure,,,current_encounter
+P_D2N035,D2N035,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N041,D2N041,T-10 years,diagnosis,Patient had strep throat as a child.,strep throat,,,temporal_expansion
+P_D2N041,D2N041,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N041,D2N041,T-1 year,diagnosis,Patient has a history of diabetes.,diabetes,,,temporal_expansion
+P_D2N024,D2N024,T-1 year,procedure,bilateral reduction mammoplasty,,,,current_encounter
+P_D2N039,D2N039,T-1 year,medication,Patient was previously prescribed lisinopril.,not specified,lisinopril,not specified,current_encounter
+P_D2N051,D2N051,T-5 years,procedure,Stent placement at the right coronary artery,,,,current_encounter
+P_D2N027,D2N027,T-2 weeks,investigation,Stress test performed,,,stress test,current_encounter
+P_D2N030,D2N030,T-1 year,investigation,Patient had a pap smear in 2019,,,pap smear,current_encounter
+P_D2N003,D2N003,T-3 months,medication,Patient was started on Imitrex.,,Imitrex,,temporal_expansion
+P_D2N003,D2N003,T-2 weeks,diagnosis,Patient has a history of kidney stones.,kidney stones,,,temporal_expansion
+P_D2N003,D2N003,T-2 weeks,diagnosis,Patient has a history of migraines.,migraines,,,temporal_expansion
+P_D2N003,D2N003,T-2 weeks,diagnosis,Patient has a history of reflux.,reflux,,,temporal_expansion
+P_D2N003,D2N003,T-2 weeks,symptom,Patient previously had kidney stones.,,,,temporal_expansion
+P_D2N006,D2N006,T-6 months,followup,Patient was last seen by the doctor.,,,,temporal_expansion
+P_D2N006,D2N006,T-2 weeks,symptom,Patient had an episode of gout affecting the right first big toe.,gout,,,temporal_expansion
+P_D2N009,D2N009,T-1 year,procedure,Patient has a history of prior discectomy.,,,,temporal_expansion
+P_D2N012,D2N012,T-1 year,medication,Patient was taking Prozac 20 mg daily.,,Prozac 20 mg,,current_encounter
+P_D2N015,D2N015,T-1 month,medication,Patient was taking Effexor for depression.,depression,Effexor,,temporal_expansion
+P_D2N018,D2N018,T-6 months,procedure,Patient had a lumbar fusion.,,,,temporal_expansion
+P_D2N042,D2N042,T-1 year,symptom,Patient had several ankle injuries in the past.,,,,temporal_expansion
+P_D2N048,D2N048,T-1 month,symptom,Patient had a left leg injury.,,,,temporal_expansion
+P_D2N060,D2N060,T-1 year,symptom,Patient has a history of several soccer-related injuries.,,,,current_encounter
+P_D2N066,D2N066,T-3 months,investigation,Patient had a hemoglobin a1c test.,,,hemoglobin a1c,current_encounter
+P_D2N068,D2N068,T-3 months,investigation,Patient had an echocardiogram performed.,,,echocardiogram,current_encounter
+P_D2N071,D2N071,T-3 years,procedure,Patient underwent a lobectomy.,,,,current_encounter
+P_D2N071,D2N071,T-1 year,medication,Patient was put on Prozac.,,Prozac,,current_encounter
+P_D2N074,D2N074,T-1 year,investigation,Eyes were checked.,,,eye check,current_encounter
+P_D2N074,D2N074,T-3 months,medication,Patient tried Tylenol for headaches.,,Tylenol,,current_encounter
+P_D2N080,D2N080,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N080,D2N080,T-1 month,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,current_encounter
+P_D2N078,D2N078,T-3 years,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N078,D2N078,T-3 years,diagnosis,Patient has a history of a grade two out of six systolic ejection murmur.,systolic ejection murmur,,,temporal_expansion
+P_D2N078,D2N078,T-1 month,investigation,X-ray of the right knee.,,,x-ray,temporal_expansion
+P_D2N084,D2N084,T-1 year,procedure,Patient stopped smoking.,,,,temporal_expansion
+P_D2N084,D2N084,T-1 year,hospitalization,Patient was in the hospital with CHF.,CHF,,,temporal_expansion
+P_D2N087,D2N087,T-2 weeks,other,Patient went hunting.,,,,current_encounter
+P_D2N069,D2N069,T-1 year,diagnosis,Patient has a history of atrial fibrillation.,Atrial fibrillation,,,temporal_expansion
+P_D2N069,D2N069,T-1 year,procedure,Patient underwent a rhinoplasty.,,,,temporal_expansion
+P_D2N072,D2N072,T-10 years,procedure,Patient underwent an appendectomy.,,,,temporal_expansion
+P_D2N081,D2N081,T-1 month,diagnosis,Patient has a recent diagnosis of stage III non-small cell lung cancer.,Stage III non-small cell lung cancer,,,current_encounter
+P_D2N081,D2N081,T-1 month,investigation,Biopsy was positive for adenocarcinoma.,,,biopsy,current_encounter
+P_D2N073,D2N073,T-5 years,investigation,Colonoscopy performed 5-6 years ago,,,Colonoscopy,current_encounter
+P_D2N082,D2N082,T-1 month,diagnosis,Patient recently diagnosed with type 2 diabetes.,type 2 diabetes,metformin,,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of diabetes type 2.,diabetes type 2,,,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of osteoarthritis.,osteoarthritis,,,current_encounter
+P_D2N079,D2N079,T-1 month,symptom,Patient reports history of intermittent aches and pains in his left shoulder.,,,,temporal_expansion
+P_D2N089,D2N089,T-1 year,procedure,Patient had a physical examination with a systolic ejection murmur heard in the past.,,,,temporal_expansion
+P_D2N092,D2N092,T-1 month,diagnosis,Patient has a history of allergies.,allergies,,,current_encounter
+P_D2N095,D2N095,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N098,D2N098,T-1 year,other,Patient retired from his office job.,,,,temporal_expansion
+P_D2N101,D2N101,T-10 years,symptom,Patient has had back and neck pain since high school.,,,,temporal_expansion
+P_D2N101,D2N101,T-1 month,other,Patient lost 10 pounds over the past few months.,,,,temporal_expansion
+P_D2N110,D2N110,T-1 month,medication,Patient completed a course of antibiotics prescribed by his PCP.,,antibiotics,,temporal_expansion
+P_D2N116,D2N116,T-10 years,symptom,Patient reports historical right shoulder pain from when he was younger while playing baseball.,,,,temporal_expansion
+P_D2N122,D2N122,T-10 years,diagnosis,Patient's mother has a history of breast cancer.,breast cancer,,,current_encounter
+P_D2N122,D2N122,T-8 years,diagnosis,Patient has a history of rheumatoid arthritis.,rheumatoid arthritis,,,current_encounter
+P_D2N122,D2N122,T-8 years,other,Patient is a previous smoker and stopped seven years ago.,,,,temporal_expansion
+P_D2N125,D2N125,T-3 months,other,Patient tried tiger balm.,,,,temporal_expansion
+P_D2N096,D2N096,T-1 month,procedure,Patient had a prior surgery on her left arm.,,,,temporal_expansion
+P_D2N105,D2N105,T-6 months,symptom,Patient reports bilateral ankle swelling.,,,,temporal_expansion
+P_D2N105,D2N105,T-1 month,symptom,Patient reports severe bilateral leg pain.,,,,temporal_expansion
+P_D2N105,D2N105,T-2 weeks,investigation,Patient underwent a chest x-ray.,,,chest x-ray,temporal_expansion
+P_D2N108,D2N108,T-1 month,diagnosis,Patient reports history of diabetes.,diabetes,,,temporal_expansion
+P_D2N117,D2N117,T-10 years,procedure,Patient underwent a cholecystectomy.,,,,temporal_expansion
+P_D2N126,D2N126,T-1 month,investigation,Patient had an x-ray of the right knee.,,,x-ray,current_encounter
+P_D2N090,D2N090,T-3 months,followup,Patient had a visit with Dr. Reyes.,,,,temporal_expansion
+P_D2N093,D2N093,T-1 year,medication,Patient was on omeprazole.,,omeprazole,,current_encounter
+P_D2N102,D2N102,T-1 month,symptom,Patient experienced intermittent episodes of gross hematuria.,,,,temporal_expansion
+P_D2N111,D2N111,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N111,D2N111,T-1 month,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,temporal_expansion
+P_D2N120,D2N120,T-1 year,other,Patient experienced weight gain over the past year.,,,,temporal_expansion
+P_D2N123,D2N123,T-1 month,investigation,Patient had hemoglobin a1c test.,,,hemoglobin a1c,current_encounter
+P_D2N115,D2N115,T-10 years,other,Played football,,,,current_encounter
+P_D2N088,D2N088,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N088,D2N088,T-1 year,diagnosis,Patient has a history of type two diabetes.,type two diabetes,,,temporal_expansion
+P_D2N088,D2N088,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N091,D2N091,T-6 months,followup,Patient last saw his neurologist.,,,,temporal_expansion
+P_D2N091,D2N091,T-6 months,procedure,Patient previously underwent knee surgery.,,,,temporal_expansion
+P_D2N094,D2N094,T-1 month,diagnosis,Patient has chronic constipation.,chronic constipation,,,temporal_expansion
+P_D2N094,D2N094,T-1 month,medication,Patient takes Miralax for chronic constipation.,,Miralax,,temporal_expansion
+P_D2N094,D2N094,T-1 month,procedure,Patient underwent an appendectomy.,,,,temporal_expansion
+P_D2N097,D2N097,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N097,D2N097,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N097,D2N097,T-1 year,procedure,Patient has a history of a systolic ejection murmur.,,,,temporal_expansion
+P_D2N100,D2N100,T-3 years,symptom,Patient reports acne started about two years ago.,acne,,,temporal_expansion
+P_D2N103,D2N103,T-6 months,procedure,Patient underwent mitral valve repair.,,,,temporal_expansion
+P_D2N112,D2N112,T-10 years,symptom,"Patient fell off of a roof thirty years ago, which was bothersome.",,,,temporal_expansion
+P_D2N118,D2N118,T-1 year,diagnosis,Patient was diagnosed with type 2 diabetes.,type 2 diabetes,,,current_encounter
+P_D2N118,D2N118,T-1 year,investigation,Patient had an A1c test.,,,A1c,current_encounter
+P_D2N121,D2N121,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N121,D2N121,T-1 year,procedure,Patient had a tonsillectomy.,,,,current_encounter
+P_D2N121,D2N121,T-1 year,medication,Patient takes lisinopril 20 mg daily.,,lisinopril 20 mg,,current_encounter
+P_D2N127,D2N127,T-3 years,hospitalization,Patient underwent surgery after his third motor vehicle accident.,,,,temporal_expansion
+P_D2N127,D2N127,T-3 years,symptom,Patient experienced neck and back pain beginning after the third motor vehicle accident.,,,,temporal_expansion
+P_D2N127,D2N127,T-1 year,medication,Patient was previously prescribed fentanyl at a pain clinic.,,fentanyl,,temporal_expansion
+P_D2N130,D2N130,T-1 year,diagnosis,Patient had a seizure.,seizure,,,temporal_expansion
+P_D2N130,D2N130,T-1 year,procedure,Patient underwent an endoscopy.,,,endoscopy,temporal_expansion
+P_D2N130,D2N130,T-1 year,diagnosis,Patient diagnosed with an episode of gastritis.,gastritis,,endoscopy,temporal_expansion
+P_D2N133,D2N133,T-1 year,diagnosis,Patient has a history of chronic back pain.,chronic back pain,,,temporal_expansion
+P_D2N133,D2N133,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N139,D2N139,T-1 month,investigation,Patient had a thyroid profile investigation.,,,thyroid profile,temporal_expansion
+P_D2N139,D2N139,T-1 month,hospitalization,Patient was in the emergency room for palpitations and high blood pressure.,hypertension,,,temporal_expansion
+P_D2N142,D2N142,T-1 month,investigation,CMP and CBC were essentially unremarkable at the last visit.,,,CMP and CBC,temporal_expansion
+P_D2N145,D2N145,T-1 month,diagnosis,"Patient has a history of rosacea, including ocular rosacea.","rosacea, ocular rosacea",,,current_encounter
+P_D2N148,D2N148,T-3 years,procedure,Patient underwent right total knee replacement.,,,,temporal_expansion
+P_D2N148,D2N148,T-3 months,symptom,Patient noted tingling in his right toes that resolved after one hour.,,,,temporal_expansion
+P_D2N148,D2N148,T-3 months,procedure,Patient attempted physical therapy at his gym.,,,,temporal_expansion
+P_D2N151,D2N151,T-1 year,diagnosis,Patient reports history of diabetes type 2.,diabetes type 2,,,temporal_expansion
+P_D2N151,D2N151,T-1 year,diagnosis,Patient reports history of hypertension.,hypertension,,,temporal_expansion
+P_D2N157,D2N157,T-10 years,diagnosis,Patient noted heart murmur heard in the past.,heart murmur,,,current_encounter
+P_D2N157,D2N157,T-6 months,hospitalization,Patient had a heart attack.,heart attack,,,current_encounter
+P_D2N157,D2N157,T-6 months,procedure,Patient underwent stent placement in the left anterior descending artery.,,,,current_encounter
+P_D2N160,D2N160,T-3 years,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N166,D2N166,T-1 year,other,Patient has a history of playing soccer.,,,,current_encounter
+P_D2N131,D2N131,T-3 years,procedure,Patient underwent a kidney transplant.,,,,temporal_expansion
+P_D2N140,D2N140,T-5 years,medication,Patient was prescribed Reglan from the emergency room.,,Reglan,,temporal_expansion
+P_D2N143,D2N143,T-3 years,diagnosis,Patient had an abnormal pap smear at age 20.,abnormal pap smear,,,temporal_expansion
+P_D2N146,D2N146,T-3 months,other,Patient lost 25 pounds.,,,,temporal_expansion
+P_D2N146,D2N146,T-1 month,procedure,Patient's father had gallbladder removed.,,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of diabetes.,diabetes,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of asthma.,asthma,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,symptom,Patient has a long history of knee pain.,,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,medication,Patient reports taking metformin.,,metformin,,temporal_expansion
+P_D2N149,D2N149,T-1 month,investigation,Patient had a hemoglobin a1c test previously.,,,hemoglobin a1c,temporal_expansion
+P_D2N155,D2N155,T-5 years,medication,Patient was on Keflex 5 months ago.,,Keflex,,temporal_expansion
+P_D2N167,D2N167,T-1 month,diagnosis,Patient had an ulcer.,ulcer,,,temporal_expansion
+P_D2N164,D2N164,T-1 year,diagnosis,Patient has a history of diabetes.,diabetes,,,temporal_expansion
+P_D2N164,D2N164,T-1 year,medication,Patient has been taking metformin.,,metformin,,temporal_expansion
+P_D2N132,D2N132,T-1 year,procedure,Lumbar fusion,not specified,not specified,not specified,current_encounter
+P_D2N135,D2N135,T-1 month,medication,Patient is on metoprolol 25 mg twice a day for atrial fibrillation.,atrial fibrillation,metoprolol 25 mg twice a day,,current_encounter
+P_D2N141,D2N141,T-1 month,investigation,CT scan of the head.,,,CT scan of the head,current_encounter
+P_D2N159,D2N159,T-6 months,symptom,"Intermittent numbness and tingling in the 1st, 2nd, and 3rd digits on the right hand",,,,current_encounter
+P_D2N159,D2N159,T-1 month,symptom,Numbness and tingling became constant,,,,current_encounter
+P_D2N129,D2N129,T-1 year,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,temporal_expansion
+P_D2N129,D2N129,T-1 year,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,temporal_expansion
+P_D2N129,D2N129,T-1 year,procedure,Patient has a known grade 2 systolic ejection murmur.,,,,temporal_expansion
+P_D2N144,D2N144,T-2 weeks,procedure,Patient received a steroid injection in his right knee.,,steroid,,temporal_expansion
+P_D2N144,D2N144,T-2 weeks,medication,Patient started taking Celebrex.,,Celebrex,,temporal_expansion
+P_D2N147,D2N147,T-3 years,procedure,Patient had an appendectomy.,,,,temporal_expansion
+P_D2N156,D2N156,T-5 years,procedure,Patient had an RCA stent placed.,,,,temporal_expansion
+P_D2N165,D2N165,T-10 years,diagnosis,Patient had an upper extremity fracture when she was in 6th grade.,upper extremity fracture,,,temporal_expansion
+P_D2N169,D2N169,T-1 year,symptom,Patient had a cough with his first cold.,,,,temporal_expansion
+P_D2N169,D2N169,T-6 months,procedure,Patient underwent cataract surgery.,,,,temporal_expansion
+P_D2N172,D2N172,T-1 year,diagnosis,Patient has a history of depression.,depression,,,current_encounter
+P_D2N172,D2N172,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N172,D2N172,T-1 year,procedure,Patient has a known grade two systolic ejection murmur.,,,,current_encounter
+P_D2N181,D2N181,T-10 years,allergy,Patient has a history of seasonal allergies.,,,,current_encounter
+P_D2N181,D2N181,T-10 years,procedure,Patient had surgery as an infant for twisted intestines.,,,,current_encounter
+P_D2N184,D2N184,T-1 month,procedure,Patient underwent right medial unicompartmental arthroplasty.,,,,temporal_expansion
+P_D2N193,D2N193,T-1 year,diagnosis,Patient has a history of seasonal allergies.,seasonal allergies,,,current_encounter
+P_D2N193,D2N193,T-1 year,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,current_encounter
+P_D2N193,D2N193,T-3 months,investigation,Patient had blood work at her last visit.,,,blood work,current_encounter
+P_D2N196,D2N196,T-1 month,diagnosis,Patient has a history of essential hypertension.,essential hypertension,,,current_encounter
+P_D2N196,D2N196,T-1 month,diagnosis,Patient has a history of hyperlipidemia.,hyperlipidemia,,,current_encounter
+P_D2N196,D2N196,T-1 month,procedure,Patient has a grade 3 out of 6 systolic ejection murmur.,,,,current_encounter
+P_D2N199,D2N199,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N205,D2N205,T-1 month,investigation,Patient had a 4.4 cm left upper lobe nodule identified on pathology.,,,pathology report,current_encounter
+P_D2N170,D2N170,T-1 year,diagnosis,Patient has a history of COPD.,COPD,,,current_encounter
+P_D2N170,D2N170,T-1 year,diagnosis,Patient has a history of congestive heart failure.,congestive heart failure,,,current_encounter
+P_D2N176,D2N176,T-1 year,diagnosis,Patient was diagnosed with mild gastritis during endoscopy.,mild gastritis,,endoscopy,temporal_expansion
+P_D2N182,D2N182,T-1 month,hospitalization,Patient was admitted to District Regional Hospital.,,,,temporal_expansion
+P_D2N182,D2N182,T-1 month,investigation,"Patient had an elevated white blood cell count of 23,000.",,,white blood cell count,temporal_expansion
+P_D2N182,D2N182,T-1 month,medication,Patient was treated with IV antibiotic therapy.,,IV antibiotic therapy,,temporal_expansion
+P_D2N185,D2N185,T-10 years,hospitalization,Patient was hospitalized three or four times at age four.,,,,temporal_expansion
+P_D2N188,D2N188,T-3 years,other,Patient has been mountain biking.,,,,temporal_expansion
+P_D2N197,D2N197,T-1 year,diagnosis,Patient has a history of migraines occurring every 1 to 2 years.,migraines,,,temporal_expansion
+P_D2N203,D2N203,T-1 month,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,current_encounter
+P_D2N206,D2N206,T-1 year,diagnosis,Patient has a history of kidney stones.,kidney stones,,,temporal_expansion
+P_D2N173,D2N173,T-1 year,diagnosis,Patient has a history of hyperlipidemia.,hyperlipidemia,,,temporal_expansion
+P_D2N173,D2N173,T-1 year,diagnosis,Patient has a history of OCD.,OCD,,,temporal_expansion
+P_D2N191,D2N191,T-1 month,medication,Patient is taking 2.5 mg of Norvasc.,,Norvasc,,current_encounter
+P_D2N191,D2N191,T-1 month,investigation,Patient had an A1c test result of 7.2.,,,A1c,current_encounter
+P_D2N194,D2N194,T-2 weeks,investigation,Patient underwent an x-ray of the left shoulder.,,,x-ray,current_encounter
+P_D2N180,D2N180,T-1 year,investigation,CT brain with and without contrast,,,CT brain,current_encounter
+P_D2N186,D2N186,T-3 years,procedure,Lumbar microdiscectomy performed in November 2020,,,,current_encounter
+P_D2N207,D2N207,T-5 years,diagnosis,Acute myocardial infarction in 2018,acute myocardial infarction,,,current_encounter
+P_D2N207,D2N207,T-5 years,procedure,Placement of a coronary artery stent in the right coronary artery in 2018,,,,current_encounter
+P_D2N207,D2N207,T-1 month,followup,Last visit with nephrologist,,,,current_encounter
+P_D2N171,D2N171,T-6 months,procedure,steroid injection for herniated disc,herniated disc,steroid,,current_encounter
+P_D2N168,D2N168,T-1 year,procedure,Patient started therapy.,,,,temporal_expansion
+P_D2N168,D2N168,T-1 year,investigation,Patient had an ECG.,,,ECG,temporal_expansion
+P_D2N168,D2N168,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N168,D2N168,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N174,D2N174,T-1 year,procedure,Patient had a stent placed.,,,,temporal_expansion
+P_D2N183,D2N183,T-3 years,medication,Patient was prescribed clindamycin lotion.,,clindamycin lotion,,temporal_expansion
+P_D2N183,D2N183,T-3 years,medication,Patient was prescribed tretinoin cream.,,tretinoin cream,,temporal_expansion
+P_D2N183,D2N183,T-3 years,medication,Patient was prescribed 4-5% benzoyl peroxide wash for face.,,4-5% benzoyl peroxide wash,,temporal_expansion
+P_D2N189,D2N189,T-2 weeks,procedure,Patient underwent stent placement in the right coronary artery.,,,,current_encounter
+P_D2N189,D2N189,T-2 weeks,procedure,Patient underwent cardiac catheterization via wrist.,,,,current_encounter
+P_D2N189,D2N189,T-2 weeks,diagnosis,Patient had an inferior myocardial infarction.,inferior myocardial infarction,,,current_encounter
+P_D2N192,D2N192,T-1 year,other,Patient traveled to Europe.,,,,temporal_expansion
+P_D2N201,D2N201,T-1 year,other,Patient gained 80 lbs.,,,,temporal_expansion

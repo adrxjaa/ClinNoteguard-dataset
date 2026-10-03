@@ -1,0 +1,25 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N068,D2N068,T-3 months,investigation,Patient had an echocardiogram performed.,,,echocardiogram,current_encounter
+P_D2N071,D2N071,T-3 years,procedure,Patient underwent a lobectomy.,,,,current_encounter
+P_D2N071,D2N071,T-1 year,medication,Patient was put on Prozac.,,Prozac,,current_encounter
+P_D2N074,D2N074,T-1 year,investigation,Eyes were checked.,,,eye check,current_encounter
+P_D2N074,D2N074,T-3 months,medication,Patient tried Tylenol for headaches.,,Tylenol,,current_encounter
+P_D2N080,D2N080,T-1 month,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N080,D2N080,T-1 month,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,current_encounter
+P_D2N078,D2N078,T-3 years,diagnosis,Patient has a history of hypertension.,hypertension,,,temporal_expansion
+P_D2N078,D2N078,T-3 years,diagnosis,Patient has a history of a grade two out of six systolic ejection murmur.,systolic ejection murmur,,,temporal_expansion
+P_D2N078,D2N078,T-1 month,investigation,X-ray of the right knee.,,,x-ray,temporal_expansion
+P_D2N084,D2N084,T-1 year,procedure,Patient stopped smoking.,,,,temporal_expansion
+P_D2N084,D2N084,T-1 year,hospitalization,Patient was in the hospital with CHF.,CHF,,,temporal_expansion
+P_D2N087,D2N087,T-2 weeks,other,Patient went hunting.,,,,current_encounter
+P_D2N069,D2N069,T-1 year,diagnosis,Patient has a history of atrial fibrillation.,Atrial fibrillation,,,temporal_expansion
+P_D2N069,D2N069,T-1 year,procedure,Patient underwent a rhinoplasty.,,,,temporal_expansion
+P_D2N072,D2N072,T-10 years,procedure,Patient underwent an appendectomy.,,,,temporal_expansion
+P_D2N081,D2N081,T-1 month,diagnosis,Patient has a recent diagnosis of stage III non-small cell lung cancer.,Stage III non-small cell lung cancer,,,current_encounter
+P_D2N081,D2N081,T-1 month,investigation,Biopsy was positive for adenocarcinoma.,,,biopsy,current_encounter
+P_D2N073,D2N073,T-5 years,investigation,Colonoscopy performed 5-6 years ago,,,Colonoscopy,current_encounter
+P_D2N082,D2N082,T-1 month,diagnosis,Patient recently diagnosed with type 2 diabetes.,type 2 diabetes,metformin,,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of diabetes type 2.,diabetes type 2,,,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N070,D2N070,T-1 year,diagnosis,Patient has a history of osteoarthritis.,osteoarthritis,,,current_encounter
+P_D2N079,D2N079,T-1 month,symptom,Patient reports history of intermittent aches and pains in his left shoulder.,,,,temporal_expansion

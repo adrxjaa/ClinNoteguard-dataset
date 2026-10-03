@@ -1,0 +1,48 @@
+patient_id,encounter_id,relative_time,event_type,description,diagnosis,medication,investigation,source_basis
+P_D2N130,D2N130,T-1 year,diagnosis,Patient had a seizure.,seizure,,,temporal_expansion
+P_D2N130,D2N130,T-1 year,procedure,Patient underwent an endoscopy.,,,endoscopy,temporal_expansion
+P_D2N130,D2N130,T-1 year,diagnosis,Patient diagnosed with an episode of gastritis.,gastritis,,endoscopy,temporal_expansion
+P_D2N133,D2N133,T-1 year,diagnosis,Patient has a history of chronic back pain.,chronic back pain,,,temporal_expansion
+P_D2N133,D2N133,T-1 year,diagnosis,Patient has a history of depression.,depression,,,temporal_expansion
+P_D2N139,D2N139,T-1 month,investigation,Patient had a thyroid profile investigation.,,,thyroid profile,temporal_expansion
+P_D2N139,D2N139,T-1 month,hospitalization,Patient was in the emergency room for palpitations and high blood pressure.,hypertension,,,temporal_expansion
+P_D2N142,D2N142,T-1 month,investigation,CMP and CBC were essentially unremarkable at the last visit.,,,CMP and CBC,temporal_expansion
+P_D2N145,D2N145,T-1 month,diagnosis,"Patient has a history of rosacea, including ocular rosacea.","rosacea, ocular rosacea",,,current_encounter
+P_D2N148,D2N148,T-3 years,procedure,Patient underwent right total knee replacement.,,,,temporal_expansion
+P_D2N148,D2N148,T-3 months,symptom,Patient noted tingling in his right toes that resolved after one hour.,,,,temporal_expansion
+P_D2N148,D2N148,T-3 months,procedure,Patient attempted physical therapy at his gym.,,,,temporal_expansion
+P_D2N151,D2N151,T-1 year,diagnosis,Patient reports history of diabetes type 2.,diabetes type 2,,,temporal_expansion
+P_D2N151,D2N151,T-1 year,diagnosis,Patient reports history of hypertension.,hypertension,,,temporal_expansion
+P_D2N157,D2N157,T-10 years,diagnosis,Patient noted heart murmur heard in the past.,heart murmur,,,current_encounter
+P_D2N157,D2N157,T-6 months,hospitalization,Patient had a heart attack.,heart attack,,,current_encounter
+P_D2N157,D2N157,T-6 months,procedure,Patient underwent stent placement in the left anterior descending artery.,,,,current_encounter
+P_D2N160,D2N160,T-3 years,diagnosis,Patient has a history of hypertension.,hypertension,,,current_encounter
+P_D2N166,D2N166,T-1 year,other,Patient has a history of playing soccer.,,,,current_encounter
+P_D2N131,D2N131,T-3 years,procedure,Patient underwent a kidney transplant.,,,,temporal_expansion
+P_D2N140,D2N140,T-5 years,medication,Patient was prescribed Reglan from the emergency room.,,Reglan,,temporal_expansion
+P_D2N143,D2N143,T-3 years,diagnosis,Patient had an abnormal pap smear at age 20.,abnormal pap smear,,,temporal_expansion
+P_D2N146,D2N146,T-3 months,other,Patient lost 25 pounds.,,,,temporal_expansion
+P_D2N146,D2N146,T-1 month,procedure,Patient's father had gallbladder removed.,,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of diabetes.,diabetes,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,diagnosis,Patient has a history of asthma.,asthma,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,symptom,Patient has a long history of knee pain.,,,,temporal_expansion
+P_D2N149,D2N149,T-1 month,medication,Patient reports taking metformin.,,metformin,,temporal_expansion
+P_D2N149,D2N149,T-1 month,investigation,Patient had a hemoglobin a1c test previously.,,,hemoglobin a1c,temporal_expansion
+P_D2N155,D2N155,T-5 years,medication,Patient was on Keflex 5 months ago.,,Keflex,,temporal_expansion
+P_D2N167,D2N167,T-1 month,diagnosis,Patient had an ulcer.,ulcer,,,temporal_expansion
+P_D2N164,D2N164,T-1 year,diagnosis,Patient has a history of diabetes.,diabetes,,,temporal_expansion
+P_D2N164,D2N164,T-1 year,medication,Patient has been taking metformin.,,metformin,,temporal_expansion
+P_D2N132,D2N132,T-1 year,procedure,Lumbar fusion,not specified,not specified,not specified,current_encounter
+P_D2N135,D2N135,T-1 month,medication,Patient is on metoprolol 25 mg twice a day for atrial fibrillation.,atrial fibrillation,metoprolol 25 mg twice a day,,current_encounter
+P_D2N141,D2N141,T-1 month,investigation,CT scan of the head.,,,CT scan of the head,current_encounter
+P_D2N159,D2N159,T-6 months,symptom,"Intermittent numbness and tingling in the 1st, 2nd, and 3rd digits on the right hand",,,,current_encounter
+P_D2N159,D2N159,T-1 month,symptom,Numbness and tingling became constant,,,,current_encounter
+P_D2N129,D2N129,T-1 year,diagnosis,Patient has a history of type 2 diabetes.,type 2 diabetes,,,temporal_expansion
+P_D2N129,D2N129,T-1 year,diagnosis,Patient has a history of high blood pressure.,high blood pressure,,,temporal_expansion
+P_D2N129,D2N129,T-1 year,procedure,Patient has a known grade 2 systolic ejection murmur.,,,,temporal_expansion
+P_D2N144,D2N144,T-2 weeks,procedure,Patient received a steroid injection in his right knee.,,steroid,,temporal_expansion
+P_D2N144,D2N144,T-2 weeks,medication,Patient started taking Celebrex.,,Celebrex,,temporal_expansion
+P_D2N147,D2N147,T-3 years,procedure,Patient had an appendectomy.,,,,temporal_expansion
+P_D2N156,D2N156,T-5 years,procedure,Patient had an RCA stent placed.,,,,temporal_expansion
+P_D2N165,D2N165,T-10 years,diagnosis,Patient had an upper extremity fracture when she was in 6th grade.,upper extremity fracture,,,temporal_expansion
