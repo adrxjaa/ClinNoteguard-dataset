@@ -21,3 +21,7 @@ venv.bak/
 .DS_Store
 *.swp
 *.swo
+
+# Synthea JAR & raw CSV output
+*.jar
+synthea/output/
