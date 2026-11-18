@@ -18,6 +18,7 @@ import argparse
 import concurrent.futures
 import json
 import os
+import threading
 import time
 from pathlib import Path
 from typing import Any, Dict, List, Set
@@ -26,6 +27,38 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field
+
+
+DEFAULT_MODEL_POOL = [
+    "gemini-3.5-flash-lite",
+    "gemini-flash-lite-latest",
+    "gemini-3.1-flash-lite",
+]
+
+
+class PerModelRateLimiter:
+    """Thread-safe round-robin model selector with per-model RPM pacing."""
+
+    def __init__(self, models: List[str], min_interval_sec: float = 4.25):
+        self.models = models
+        self.min_interval = min_interval_sec
+        self._locks = {m: threading.Lock() for m in models}
+        self._last_call = {m: 0.0 for m in models}
+        self._rr_lock = threading.Lock()
+        self._rr_idx = 0
+
+    def acquire(self, offset: int = 0) -> str:
+        with self._rr_lock:
+            idx = (self._rr_idx + offset) % len(self.models)
+            self._rr_idx = (self._rr_idx + 1) % len(self.models)
+            model = self.models[idx]
+        with self._locks[model]:
+            now = time.monotonic()
+            wait = self.min_interval - (now - self._last_call[model])
+            if wait > 0:
+                time.sleep(wait)
+            self._last_call[model] = time.monotonic()
+        return model
 
 
 class VerbalizedEncounter(BaseModel):
@@ -89,14 +122,15 @@ STRUCTURED SYNTHEA INPUT:
 
 def _verbalize_one(
     client: genai.Client,
-    model_name: str,
+    limiter: PerModelRateLimiter,
     patient_rec: Dict[str, Any],
     enc: Dict[str, Any],
-    max_retries: int = 4,
+    max_retries: int = 6,
 ) -> Dict[str, Any]:
     prompt = _build_prompt(patient_rec, enc)
     last_err = None
     for attempt in range(max_retries):
+        model_name = limiter.acquire(offset=attempt)
         try:
             resp = client.models.generate_content(
                 model=model_name,
@@ -132,7 +166,11 @@ def _verbalize_one(
             }
         except Exception as e:
             last_err = e
-            time.sleep(min(2 ** (attempt + 1), 16))
+            err_s = str(e)
+            if "429" in err_s or "RESOURCE_EXHAUSTED" in err_s:
+                time.sleep(10 + attempt * 5)
+            else:
+                time.sleep(min(2 ** (attempt + 1), 16))
     raise RuntimeError(f"Failed encounter {enc['encounter_id']} after {max_retries} retries: {last_err}")
 
 
@@ -140,9 +178,9 @@ def main():
     parser = argparse.ArgumentParser(description="Verbalize Synthea longitudinal timelines with Gemini API.")
     parser.add_argument("--timelines", type=Path, default=Path(__file__).parent / "synthea_timelines.jsonl")
     parser.add_argument("--out", type=Path, default=Path(__file__).parent / "synthea_longitudinal_ehr.jsonl")
-    parser.add_argument("--model", type=str, default="gemini-3.5-flash-lite")
-    parser.add_argument("--max-patients", type=int, default=60)
-    parser.add_argument("--workers", type=int, default=6)
+    parser.add_argument("--models", type=str, default=",".join(DEFAULT_MODEL_POOL))
+    parser.add_argument("--max-patients", type=int, default=170)
+    parser.add_argument("--workers", type=int, default=3)
     args = parser.parse_args()
 
     load_dotenv(Path(__file__).parent / ".env")
@@ -151,6 +189,8 @@ def main():
         raise RuntimeError("GEMINI_API_KEY not found in environment or .env")
 
     client = genai.Client(api_key=api_key)
+    model_pool = [m.strip() for m in args.models.split(",") if m.strip()]
+    limiter = PerModelRateLimiter(model_pool, min_interval_sec=4.25)
 
     # Load already verbalized encounters for resume support
     done_eids: Set[str] = set()
@@ -184,7 +224,7 @@ def main():
     with open(args.out, "a", encoding="utf-8") as fout:
         with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
             future_map = {
-                pool.submit(_verbalize_one, client, args.model, pat, enc): enc["encounter_id"]
+                pool.submit(_verbalize_one, client, limiter, pat, enc): enc["encounter_id"]
                 for pat, enc in tasks
             }
             for fut in concurrent.futures.as_completed(future_map):
